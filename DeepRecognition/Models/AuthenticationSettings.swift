@@ -24,22 +24,22 @@ struct AuthenticationSettings: Codable {
     var scopes: String
     
     init() {
-        self.clientId = "xebVxA8Syn5C9fRAL4ySdwnMhAsCgGIlaBnNAnfO"
-        self.clientSecret = "VPpnoVE4aBOXHGXvPKiiq9gbUoNRQqxKIcHEM8Oi5ghhUqt0F26EMcoRmuOVMMSjTwhZsPZlK5G78MPk7SXPMj6nGWApBEJXRne5DzQaIRjwXqMcxc13IplppzkqYFSN"
-        self.authorizeUri = "https://app.7geese.com/o/authorize"
-        self.tokenUri = "https://app.7geese.com/o/token"
-        self.redirectUri = "https://app.deeprecognition.com/oauth/signin-redirect"
-        self.scopes = "all"
+        clientId = "xebVxA8Syn5C9fRAL4ySdwnMhAsCgGIlaBnNAnfO"
+        clientSecret = "VPpnoVE4aBOXHGXvPKiiq9gbUoNRQqxKIcHEM8Oi5ghhUqt0F26EMcoRmuOVMMSjTwhZsPZlK5G78MPk7SXPMj6nGWApBEJXRne5DzQaIRjwXqMcxc13IplppzkqYFSN"
+        authorizeUri = "https://app.7geese.com/o/authorize"
+        tokenUri = "https://app.7geese.com/o/token"
+        redirectUri = "https://app.deeprecognition.com/oauth/signin-redirect"
+        scopes = "all"
     }
     
-    func get() -> OAuth2JSON {
+    func getAuthCodeFlow() -> OAuth2JSON {
         let settings = [
-            "client_id": self.clientId,
-            "client_secret": self.clientSecret,
-            "authorize_uri": self.authorizeUri,
-            "token_uri": self.tokenUri,
-            "redirect_uris": [ self.redirectUri ],
-            "scope": self.scopes,
+            "client_id": clientId,
+            "client_secret": clientSecret,
+            "authorize_uri": authorizeUri,
+            "token_uri": tokenUri,
+            "redirect_uris": [ redirectUri ],
+            "scope": scopes,
             "secret_in_body": false,
             "keychain": true,
         ] as OAuth2JSON
