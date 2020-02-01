@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.0.0-rc.3)
+  - SwiftIcons (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
+  - SwiftIcons (~> 2.3.2)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - SwiftIcons
 
 SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
 
-PODFILE CHECKSUM: 3af961f426ec052569c31034123aaa9ef0cafc5d
+PODFILE CHECKSUM: ebd0e5855e11730798081573b713f93f98a24fa2
 
 COCOAPODS: 1.8.4

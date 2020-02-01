@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIView {
-    
     func addConstraints(withformat format: String, views: UIView...) {
         var viewsDictionary = [String: UIView]()
         
@@ -19,10 +18,12 @@ extension UIView {
             viewsDictionary[key] = view
         }
         
-        addConstraints(NSLayoutConstraint
-            .constraints(withVisualFormat: format,
-                         options: NSLayoutConstraint.FormatOptions(),
-                         metrics: nil,
-                         views: viewsDictionary))
+        let constraints = NSLayoutConstraint.constraints(
+            withVisualFormat: format,
+            options: NSLayoutConstraint.FormatOptions(),
+            metrics: nil,
+            views: viewsDictionary)
+        
+        addConstraints(constraints)
     }
 }

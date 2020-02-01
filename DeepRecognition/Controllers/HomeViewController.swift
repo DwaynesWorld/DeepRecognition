@@ -10,10 +10,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
     unowned var homeView: HomeView { self.view as! HomeView }
+    unowned var lastView: HeroView { homeView.lastView }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         loadUserInfo()
     }
     

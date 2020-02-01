@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		683177B323E4F58A008DD7EF /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683177B223E4F58A008DD7EF /* AuthState.swift */; };
+		683177B623E604BF008DD7EF /* HeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683177B523E604BF008DD7EF /* HeroView.swift */; };
+		683177B823E61516008DD7EF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683177B723E61516008DD7EF /* SearchView.swift */; };
 		68674E8A23DD038500A527E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68674E8923DD038500A527E3 /* AppDelegate.swift */; };
 		68674E8C23DD038500A527E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68674E8B23DD038500A527E3 /* SceneDelegate.swift */; };
 		68674E8E23DD038500A527E3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68674E8D23DD038500A527E3 /* LoginViewController.swift */; };
@@ -46,6 +48,8 @@
 		0FE297CEEFA1D6D850760A18 /* Pods-DeepRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepRecognition.debug.xcconfig"; path = "Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition.debug.xcconfig"; sourceTree = "<group>"; };
 		64123C9F3E428624CCBC4CCF /* Pods-DeepRecognition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepRecognition.release.xcconfig"; path = "Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition.release.xcconfig"; sourceTree = "<group>"; };
 		683177B223E4F58A008DD7EF /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
+		683177B523E604BF008DD7EF /* HeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroView.swift; sourceTree = "<group>"; };
+		683177B723E61516008DD7EF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		68674E8623DD038500A527E3 /* DeepRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68674E8923DD038500A527E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68674E8B23DD038500A527E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,16 @@
 				64123C9F3E428624CCBC4CCF /* Pods-DeepRecognition.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		683177B423E6049C008DD7EF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				68BB322923DD417800E22E6C /* HomeView.swift */,
+				683177B523E604BF008DD7EF /* HeroView.swift */,
+				683177B723E61516008DD7EF /* SearchView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		68674E7D23DD038500A527E3 = {
@@ -153,10 +167,10 @@
 		68BB320623DD24C800E22E6C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				683177B423E6049C008DD7EF /* Home */,
 				68BB320823DD24C800E22E6C /* LaunchScreen.storyboard */,
 				68BB320D23DD24C800E22E6C /* BaseView.swift */,
 				68BB320723DD24C800E22E6C /* LoginView.swift */,
-				68BB322923DD417800E22E6C /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,7 +313,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				68BB321623DD24C800E22E6C /* Colors.swift in Sources */,
+				683177B823E61516008DD7EF /* SearchView.swift in Sources */,
 				68674E8E23DD038500A527E3 /* LoginViewController.swift in Sources */,
+				683177B623E604BF008DD7EF /* HeroView.swift in Sources */,
 				68BB322823DD3A1700E22E6C /* Authentication.swift in Sources */,
 				68BB322C23DD41B700E22E6C /* HomeViewController.swift in Sources */,
 				68BB321523DD24C800E22E6C /* ImageCache.swift in Sources */,
@@ -451,6 +467,7 @@
 			baseConfigurationReference = 0FE297CEEFA1D6D850760A18 /* Pods-DeepRecognition.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5B2H3TP95N;
 				INFOPLIST_FILE = DeepRecognition/Info.plist;
@@ -460,6 +477,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KT.DeepRecognition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -471,6 +489,7 @@
 			baseConfigurationReference = 64123C9F3E428624CCBC4CCF /* Pods-DeepRecognition.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5B2H3TP95N;
 				INFOPLIST_FILE = DeepRecognition/Info.plist;
@@ -480,6 +499,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KT.DeepRecognition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
