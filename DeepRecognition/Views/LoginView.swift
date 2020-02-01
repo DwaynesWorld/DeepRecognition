@@ -54,6 +54,9 @@ class LoginView: BaseView {
         field.backgroundColor = UIColor(white: 1, alpha: 0.95)
         field.borderStyle = .roundedRect
         field.translatesAutoresizingMaskIntoConstraints = false
+        
+        field.text = "kyle.thompson@hcss.com"
+        
         return field
     }()
     
@@ -64,6 +67,9 @@ class LoginView: BaseView {
         field.backgroundColor = UIColor(white: 1, alpha: 0.95)
         field.borderStyle = .roundedRect
         field.translatesAutoresizingMaskIntoConstraints = false
+        
+        field.text = ""
+        
         return field
     }()
     

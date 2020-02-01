@@ -10,15 +10,13 @@ import UIKit
 
 class HomeViewController: UIViewController {
     unowned var homeView: HomeView { self.view as! HomeView }
-    unowned var homeLabel: UILabel { homeView.homeLabel }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        modalPresentationStyle = .fullScreen
-        
+                
         loadUserInfo()
     }
+    
     
     public override func loadView() {
         view = HomeView()

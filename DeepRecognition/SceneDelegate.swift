@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
         
-        if false {
+        if true {
             self.window?.rootViewController = HomeViewController()
         } else {
             self.window?.rootViewController = LoginViewController()
