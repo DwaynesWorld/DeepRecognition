@@ -11,7 +11,7 @@ import UIKit
 class HomeView: BaseView {
     public let homeLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "ffff"
         label.numberOfLines = 2
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.light)
         label.textColor = .darkGray

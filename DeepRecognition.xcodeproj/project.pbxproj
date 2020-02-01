@@ -3,18 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		683177B323E4F58A008DD7EF /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683177B223E4F58A008DD7EF /* AuthState.swift */; };
 		68674E8A23DD038500A527E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68674E8923DD038500A527E3 /* AppDelegate.swift */; };
 		68674E8C23DD038500A527E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68674E8B23DD038500A527E3 /* SceneDelegate.swift */; };
 		68674E8E23DD038500A527E3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68674E8D23DD038500A527E3 /* LoginViewController.swift */; };
 		68674E9323DD038600A527E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68674E9223DD038600A527E3 /* Assets.xcassets */; };
-		68674E9E23DD0AF400A527E3 /* AuthenticationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68674E9D23DD0AF400A527E3 /* AuthenticationSettings.swift */; };
-		68BB31F923DD1D0400E22E6C /* OAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB31E123DD1BCB00E22E6C /* OAuth2.framework */; };
-		68BB31FA23DD1D0400E22E6C /* OAuth2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB31E123DD1BCB00E22E6C /* OAuth2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		68BB320023DD24BA00E22E6C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB31FD23DD24BA00E22E6C /* MainTabBarController.swift */; };
 		68BB321523DD24C800E22E6C /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB320423DD24C800E22E6C /* ImageCache.swift */; };
 		68BB321623DD24C800E22E6C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB320523DD24C800E22E6C /* Colors.swift */; };
 		68BB321723DD24C800E22E6C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB320723DD24C800E22E6C /* LoginView.swift */; };
@@ -29,47 +26,16 @@
 		68BB322A23DD417800E22E6C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB322923DD417800E22E6C /* HomeView.swift */; };
 		68BB322C23DD41B700E22E6C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB322B23DD41B700E22E6C /* HomeViewController.swift */; };
 		68BB322E23DD4A0500E22E6C /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BB322D23DD4A0500E22E6C /* UserProfile.swift */; };
+		CEA42A62CF33AE253A94C934 /* Pods_DeepRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A79F50BAA512C1E3381C21 /* Pods_DeepRecognition.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		68BB31DE23DD1BCB00E22E6C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68BB31D723DD1BCA00E22E6C /* OAuth2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEE209471942772800736F1A;
-			remoteInfo = OAuth2macOS;
-		};
-		68BB31E023DD1BCB00E22E6C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68BB31D723DD1BCA00E22E6C /* OAuth2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEDB8624193FAAE500C4EEA1;
-			remoteInfo = OAuth2iOS;
-		};
-		68BB31E223DD1BCB00E22E6C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68BB31D723DD1BCA00E22E6C /* OAuth2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 659854461C5B3BEA00237D39;
-			remoteInfo = OAuth2tvOS;
-		};
-		68BB31E423DD1BCB00E22E6C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68BB31D723DD1BCA00E22E6C /* OAuth2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEE209A219427DFE00736F1A;
-			remoteInfo = OAuth2Tests;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		68BB31FB23DD1D0400E22E6C /* Embed Frameworks */ = {
+		68616AF123E4DDE7009BF23B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				68BB31FA23DD1D0400E22E6C /* OAuth2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,15 +43,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0FE297CEEFA1D6D850760A18 /* Pods-DeepRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepRecognition.debug.xcconfig"; path = "Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition.debug.xcconfig"; sourceTree = "<group>"; };
+		64123C9F3E428624CCBC4CCF /* Pods-DeepRecognition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepRecognition.release.xcconfig"; path = "Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition.release.xcconfig"; sourceTree = "<group>"; };
+		683177B223E4F58A008DD7EF /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
 		68674E8623DD038500A527E3 /* DeepRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68674E8923DD038500A527E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68674E8B23DD038500A527E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		68674E8D23DD038500A527E3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		68674E9223DD038600A527E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68674E9723DD038600A527E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68674E9D23DD0AF400A527E3 /* AuthenticationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSettings.swift; sourceTree = "<group>"; };
-		68BB31D723DD1BCA00E22E6C /* OAuth2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuth2.xcodeproj; path = OAuth2/OAuth2.xcodeproj; sourceTree = "<group>"; };
-		68BB31FD23DD24BA00E22E6C /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		68BB320423DD24C800E22E6C /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		68BB320523DD24C800E22E6C /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		68BB320723DD24C800E22E6C /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -100,6 +66,7 @@
 		68BB322923DD417800E22E6C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		68BB322B23DD41B700E22E6C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		68BB322D23DD4A0500E22E6C /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		C4A79F50BAA512C1E3381C21 /* Pods_DeepRecognition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepRecognition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,20 +74,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68BB31F923DD1D0400E22E6C /* OAuth2.framework in Frameworks */,
+				CEA42A62CF33AE253A94C934 /* Pods_DeepRecognition.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CBCBB165AF4674AFE1492F4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0FE297CEEFA1D6D850760A18 /* Pods-DeepRecognition.debug.xcconfig */,
+				64123C9F3E428624CCBC4CCF /* Pods-DeepRecognition.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		68674E7D23DD038500A527E3 = {
 			isa = PBXGroup;
 			children = (
 				68674E8823DD038500A527E3 /* DeepRecognition */,
 				68674E8723DD038500A527E3 /* Products */,
 				68BB31E823DD1BFE00E22E6C /* Frameworks */,
-				68BB31D723DD1BCA00E22E6C /* OAuth2.xcodeproj */,
+				0CBCBB165AF4674AFE1492F4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,20 +124,10 @@
 			path = DeepRecognition;
 			sourceTree = "<group>";
 		};
-		68BB31D823DD1BCA00E22E6C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				68BB31DF23DD1BCB00E22E6C /* OAuth2.framework */,
-				68BB31E123DD1BCB00E22E6C /* OAuth2.framework */,
-				68BB31E323DD1BCB00E22E6C /* OAuth2.framework */,
-				68BB31E523DD1BCB00E22E6C /* OAuth2Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		68BB31E823DD1BFE00E22E6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4A79F50BAA512C1E3381C21 /* Pods_DeepRecognition.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				68674E8D23DD038500A527E3 /* LoginViewController.swift */,
-				68BB31FD23DD24BA00E22E6C /* MainTabBarController.swift */,
 				68BB322B23DD41B700E22E6C /* HomeViewController.swift */,
 			);
 			path = Controllers;
@@ -179,7 +144,6 @@
 		68BB320323DD24C800E22E6C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				68BB322723DD3A1700E22E6C /* Authentication.swift */,
 				68BB320423DD24C800E22E6C /* ImageCache.swift */,
 				68BB320523DD24C800E22E6C /* Colors.swift */,
 			);
@@ -211,9 +175,10 @@
 		68BB321323DD24C800E22E6C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				68674E9D23DD0AF400A527E3 /* AuthenticationSettings.swift */,
+				68BB322723DD3A1700E22E6C /* Authentication.swift */,
 				68BB321423DD24C800E22E6C /* User.swift */,
 				68BB322D23DD4A0500E22E6C /* UserProfile.swift */,
+				683177B223E4F58A008DD7EF /* AuthState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,10 +190,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68674E9A23DD038600A527E3 /* Build configuration list for PBXNativeTarget "DeepRecognition" */;
 			buildPhases = (
+				76988B7E64391B83950B31DE /* [CP] Check Pods Manifest.lock */,
 				68674E8223DD038500A527E3 /* Sources */,
 				68674E8323DD038500A527E3 /* Frameworks */,
 				68674E8423DD038500A527E3 /* Resources */,
-				68BB31FB23DD1D0400E22E6C /* Embed Frameworks */,
+				68616AF123E4DDE7009BF23B /* Embed Frameworks */,
+				1A306F4156E5D1EEF096AB7C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,49 +232,12 @@
 			mainGroup = 68674E7D23DD038500A527E3;
 			productRefGroup = 68674E8723DD038500A527E3 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 68BB31D823DD1BCA00E22E6C /* Products */;
-					ProjectRef = 68BB31D723DD1BCA00E22E6C /* OAuth2.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				68674E8523DD038500A527E3 /* DeepRecognition */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		68BB31DF23DD1BCB00E22E6C /* OAuth2.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuth2.framework;
-			remoteRef = 68BB31DE23DD1BCB00E22E6C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		68BB31E123DD1BCB00E22E6C /* OAuth2.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuth2.framework;
-			remoteRef = 68BB31E023DD1BCB00E22E6C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		68BB31E323DD1BCB00E22E6C /* OAuth2.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = OAuth2.framework;
-			remoteRef = 68BB31E223DD1BCB00E22E6C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		68BB31E523DD1BCB00E22E6C /* OAuth2Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OAuth2Tests.xctest;
-			remoteRef = 68BB31E423DD1BCB00E22E6C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		68674E8423DD038500A527E3 /* Resources */ = {
@@ -321,6 +251,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A306F4156E5D1EEF096AB7C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76988B7E64391B83950B31DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeepRecognition-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		68674E8223DD038500A527E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -333,7 +305,7 @@
 				68BB321523DD24C800E22E6C /* ImageCache.swift in Sources */,
 				68BB321E23DD24C800E22E6C /* UIColor.swift in Sources */,
 				68674E8A23DD038500A527E3 /* AppDelegate.swift in Sources */,
-				68BB320023DD24BA00E22E6C /* MainTabBarController.swift in Sources */,
+				683177B323E4F58A008DD7EF /* AuthState.swift in Sources */,
 				68BB322E23DD4A0500E22E6C /* UserProfile.swift in Sources */,
 				68674E8C23DD038500A527E3 /* SceneDelegate.swift in Sources */,
 				68BB321723DD24C800E22E6C /* LoginView.swift in Sources */,
@@ -342,7 +314,6 @@
 				68BB321F23DD24C800E22E6C /* UIImageView.swift in Sources */,
 				68BB322023DD24C800E22E6C /* CMTime.swift in Sources */,
 				68BB322A23DD417800E22E6C /* HomeView.swift in Sources */,
-				68674E9E23DD0AF400A527E3 /* AuthenticationSettings.swift in Sources */,
 				68BB322123DD24C800E22E6C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +448,7 @@
 		};
 		68674E9B23DD038600A527E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FE297CEEFA1D6D850760A18 /* Pods-DeepRecognition.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -488,6 +460,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KT.DeepRecognition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -495,6 +468,7 @@
 		};
 		68674E9C23DD038600A527E3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64123C9F3E428624CCBC4CCF /* Pods-DeepRecognition.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -506,6 +480,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KT.DeepRecognition;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

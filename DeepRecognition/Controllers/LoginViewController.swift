@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        modalPresentationStyle = .fullScreen
         setupActions()
     }
     
@@ -54,18 +54,15 @@ class LoginViewController: UIViewController {
             return
         }
         
-        
-        
-//        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-//            if let error = error {
-//                print(error)
-//                return
-//            }
-//
-//            if result != nil {
-//                self.present(MainTabBarController(), animated: true, completion: nil)
-//            }
-//        }
+        let auth = Authentication.shared
+        auth.signIn(withUsername: email, password: password) { success in
+            if success {
+                self.present(HomeViewController(), animated: true, completion: nil)
+            }
+            else {
+                print("invalid login")
+            }
+        }
     }
     
     @objc func handleSignup() {

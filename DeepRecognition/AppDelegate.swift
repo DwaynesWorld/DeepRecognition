@@ -17,17 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(_ application: UIApplication,
-                     open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        do {
-            try Authentication.shared.oauth2.handleRedirectURL(url)
-            return true
-        } catch let error {
-            print(error)
-            return false
-        }
-    }
+//    func application(_ application: UIApplication,
+//                     open url: URL,
+//                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        do {
+//            try Authentication.shared.oauth2.handleRedirectURL(url)
+//            return true
+//        } catch let error {
+//            print(error)
+//            return false
+//        }
+//    }
     
 
     // MARK: UISceneSession Lifecycle

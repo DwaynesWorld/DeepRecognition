@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         if false {
-            self.window?.rootViewController = MainTabBarController()
+            self.window?.rootViewController = HomeViewController()
         } else {
             self.window?.rootViewController = LoginViewController()
         }
