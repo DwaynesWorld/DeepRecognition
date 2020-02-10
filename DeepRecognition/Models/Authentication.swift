@@ -20,13 +20,16 @@ class Authentication {
     static let shared = Authentication()
     private init() {}
     
-    func signIn(withUsername username: String, password: String, handler:@escaping (_ success: Bool)-> Void) {
+    func signIn(
+        withUsername username: String,
+        password: String,
+        handler: @escaping (_ success: Bool)-> Void) {
         
         let parameters = [
             "grant_type": "password",
             "username": username,
             "password": password,
-            "scope": "all"
+            "scope": scope
         ]
         
         let headers: HTTPHeaders = [
@@ -40,9 +43,11 @@ class Authentication {
                         self.current = result
                         handler(true)
                     }
+                } 
+                else {
+                    handler(false)
                 }
             
-                handler(false)
         }
     }
 }

@@ -6,12 +6,7 @@
 //  Copyright © 2020 Kyle Thompson. All rights reserved.
 //
 
-
 import Foundation
-
-// https://app.quicktype.io
-// let userProfile = try? newJSONDecoder().decode(UserProfile.self, from: jsonData)
-
 
 struct UserProfile: Codable {
     let url, id: String

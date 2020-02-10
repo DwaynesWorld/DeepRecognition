@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Foundation
-
 struct AuthState: Codable {
     let accessToken, tokenType: String
     let expiresIn: Int

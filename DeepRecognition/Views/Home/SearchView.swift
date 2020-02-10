@@ -11,29 +11,33 @@ import UIKit
 import SwiftIcons
 
 class SearchView: BaseView {
-    let cellId = "cellId"
     
     public let searchField: UITextField = {
         let field = UITextField(frame: .zero)
-        field.backgroundColor = .white
-        field.setLeftViewIcon(icon: .googleMaterialDesign(.search), textColor: .rgb(210, 210, 210))
-        field.layer.cornerRadius = 8
-        field.layer.masksToBounds = true
+        
         field.attributedPlaceholder = NSAttributedString(
             string: "Search for a co-worker",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        field.backgroundColor = .white
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
     
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.dataSource = self
-        view.delegate = self
-        return view
+    public let searchButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        
+        button.setIcon(
+            icon: .googleMaterialDesign(.search),
+            iconSize: 26.0,
+            color: .white,
+            backgroundColor: .rgb(63, 89, 100),
+            forState: .normal)
+        
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override func setup() {
@@ -45,80 +49,29 @@ class SearchView: BaseView {
     }
         
     private func setupView() {
-        backgroundColor = UIColor(white: 0.95, alpha: 0.9)
-        layer.cornerRadius = 26
-        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        backgroundColor = .white
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
     }
     
     private func setupSubViews() {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        
         addSubview(searchField)
-        addSubview(collectionView)
+        addSubview(searchButton)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            searchField.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            searchField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 15),
-            searchField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -15),
-            searchField.heightAnchor.constraint(equalToConstant: 45)
+            searchField.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            searchField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
+            searchField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -60),
+            searchField.heightAnchor.constraint(equalToConstant: 40)
         ])
-
+        
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 15),
-            collectionView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 15),
-            collectionView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -15),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            searchButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            searchButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
+            searchButton.heightAnchor.constraint(equalToConstant: 40),
+            searchButton.widthAnchor.constraint(equalToConstant: 40)
         ])
-    }
-}
-
-// MARK: - CollectionView Methods
-extension SearchView:
-    UICollectionViewDataSource,
-    UICollectionViewDelegate,
-    UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int) -> Int {
-        
-        return 40
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: cellId,
-            for: indexPath)
-        
-        cell.backgroundColor = .white
-        
-        return cell
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath) {
-        print("selected me \(indexPath.row)")
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: frame.width , height: 80)
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-
-        return 10
     }
 }
