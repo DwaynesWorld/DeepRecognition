@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		681118D823F102F5001AF201 /* GroupCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681118D723F102F5001AF201 /* GroupCollectionView.swift */; };
+		681118DA23F11537001AF201 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681118D923F11537001AF201 /* GroupCell.swift */; };
+		681118DC23F11579001AF201 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681118DB23F11579001AF201 /* BaseCell.swift */; };
+		681118DE23F12BF6001AF201 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681118DD23F12BF6001AF201 /* MainController.swift */; };
 		683177B323E4F58A008DD7EF /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683177B223E4F58A008DD7EF /* AuthState.swift */; };
-		683177B623E604BF008DD7EF /* HeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683177B523E604BF008DD7EF /* HeroView.swift */; };
 		683177B823E61516008DD7EF /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683177B723E61516008DD7EF /* SearchView.swift */; };
 		68674E8A23DD038500A527E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68674E8923DD038500A527E3 /* AppDelegate.swift */; };
 		68674E8C23DD038500A527E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68674E8B23DD038500A527E3 /* SceneDelegate.swift */; };
@@ -47,8 +50,11 @@
 /* Begin PBXFileReference section */
 		0FE297CEEFA1D6D850760A18 /* Pods-DeepRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepRecognition.debug.xcconfig"; path = "Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition.debug.xcconfig"; sourceTree = "<group>"; };
 		64123C9F3E428624CCBC4CCF /* Pods-DeepRecognition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepRecognition.release.xcconfig"; path = "Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition.release.xcconfig"; sourceTree = "<group>"; };
+		681118D723F102F5001AF201 /* GroupCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionView.swift; sourceTree = "<group>"; };
+		681118D923F11537001AF201 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		681118DB23F11579001AF201 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		681118DD23F12BF6001AF201 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		683177B223E4F58A008DD7EF /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
-		683177B523E604BF008DD7EF /* HeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroView.swift; sourceTree = "<group>"; };
 		683177B723E61516008DD7EF /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		68674E8623DD038500A527E3 /* DeepRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68674E8923DD038500A527E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,8 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				68BB322923DD417800E22E6C /* HomeView.swift */,
-				683177B523E604BF008DD7EF /* HeroView.swift */,
 				683177B723E61516008DD7EF /* SearchView.swift */,
+				681118D723F102F5001AF201 /* GroupCollectionView.swift */,
+				681118D923F11537001AF201 /* GroupCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -151,6 +158,7 @@
 			children = (
 				68674E8D23DD038500A527E3 /* LoginViewController.swift */,
 				68BB322B23DD41B700E22E6C /* HomeViewController.swift */,
+				681118DD23F12BF6001AF201 /* MainController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -171,6 +179,7 @@
 				68BB320823DD24C800E22E6C /* LaunchScreen.storyboard */,
 				68BB320D23DD24C800E22E6C /* BaseView.swift */,
 				68BB320723DD24C800E22E6C /* LoginView.swift */,
+				681118DB23F11579001AF201 /* BaseCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,8 +324,8 @@
 				68BB321623DD24C800E22E6C /* Colors.swift in Sources */,
 				683177B823E61516008DD7EF /* SearchView.swift in Sources */,
 				68674E8E23DD038500A527E3 /* LoginViewController.swift in Sources */,
-				683177B623E604BF008DD7EF /* HeroView.swift in Sources */,
 				68BB322823DD3A1700E22E6C /* Authentication.swift in Sources */,
+				681118DC23F11579001AF201 /* BaseCell.swift in Sources */,
 				68BB322C23DD41B700E22E6C /* HomeViewController.swift in Sources */,
 				68BB321523DD24C800E22E6C /* ImageCache.swift in Sources */,
 				68BB321E23DD24C800E22E6C /* UIColor.swift in Sources */,
@@ -325,9 +334,12 @@
 				68BB322E23DD4A0500E22E6C /* UserProfile.swift in Sources */,
 				68674E8C23DD038500A527E3 /* SceneDelegate.swift in Sources */,
 				68BB321723DD24C800E22E6C /* LoginView.swift in Sources */,
+				681118D823F102F5001AF201 /* GroupCollectionView.swift in Sources */,
 				68BB321D23DD24C800E22E6C /* UIView.swift in Sources */,
 				68BB321C23DD24C800E22E6C /* BaseView.swift in Sources */,
+				681118DA23F11537001AF201 /* GroupCell.swift in Sources */,
 				68BB321F23DD24C800E22E6C /* UIImageView.swift in Sources */,
+				681118DE23F12BF6001AF201 /* MainController.swift in Sources */,
 				68BB322023DD24C800E22E6C /* CMTime.swift in Sources */,
 				68BB322A23DD417800E22E6C /* HomeView.swift in Sources */,
 				68BB322123DD24C800E22E6C /* User.swift in Sources */,
