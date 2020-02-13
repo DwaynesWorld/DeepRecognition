@@ -34,6 +34,7 @@ class SearchView: BaseView {
             backgroundColor: .rgb(63, 89, 100),
             forState: .normal)
         
+        button.showsTouchWhenHighlighted = true
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false

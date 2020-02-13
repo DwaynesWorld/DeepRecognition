@@ -20,6 +20,25 @@ class GroupCollectionView: BaseView {
         return label
     }()
     
+    public let createGroupButton: UIButton = {
+        let button = UIButton(frame: .zero)
+
+        button.setIcon(
+            icon: .ionicons(.androidAdd),
+            color: .rgb(30, 46, 52),
+            forState: .normal)
+        
+//        button.setIcon(
+//            icon: .ionicons(.androidAdd),
+//            iconSize: nil,
+//            color: .gray,
+//            backgroundColor: .clear,
+//            forState: .focused)
+        button.showsTouchWhenHighlighted = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -48,6 +67,7 @@ class GroupCollectionView: BaseView {
         collectionView.register(GroupCell.self, forCellWithReuseIdentifier: cellId)
 
         addSubview(label)
+        addSubview(createGroupButton)
         addSubview(collectionView)
     }
     
@@ -56,7 +76,14 @@ class GroupCollectionView: BaseView {
             label.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             label.heightAnchor.constraint(equalToConstant: 15),
-            label.widthAnchor.constraint(equalToConstant: 100)
+            label.widthAnchor.constraint(equalToConstant: 70)
+        ])
+        
+        NSLayoutConstraint.activate([
+            createGroupButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            createGroupButton.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 2),
+            createGroupButton.heightAnchor.constraint(equalToConstant: 15),
+            createGroupButton.widthAnchor.constraint(equalToConstant: 15)
         ])
         
         NSLayoutConstraint.activate([

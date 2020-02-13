@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AuthState: Codable {
+class AuthState: Codable {
     let accessToken, tokenType: String
     let expiresIn: Int
     let refreshToken, scope: String

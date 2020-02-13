@@ -56,6 +56,7 @@ class GroupCell: BaseCell {
         return label
     }()
     
+    
     override func setup() {
         super.setup()
         

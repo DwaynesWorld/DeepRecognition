@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     var isLoggingIn = true
+    let auth = AuthService() // TODO: Setup DI
     
     unowned var loginView: LoginView { self.view as! LoginView }
     unowned var emailTextField: UITextField { loginView.emailTextField }
@@ -22,11 +23,22 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if isSignedIn() {
+            let home = HomeViewController()
+            home.modalPresentationStyle = .fullScreen
+            self.present(home, animated: true, completion: nil)
+        }
+        
         setupActions()
     }
     
     public override func loadView() {
         self.view = LoginView()
+    }
+    
+    private func isSignedIn() -> Bool {
+        return self.auth.checkSession()
     }
     
     private func setupActions() {
@@ -53,8 +65,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let auth = Authentication.shared
-        auth.signIn(withUsername: email, password: password) { success in
+        self.auth.signIn(withUsername: email, password: password) { success in
             if success {
                 let home = HomeViewController()
                 home.modalPresentationStyle = .fullScreen
