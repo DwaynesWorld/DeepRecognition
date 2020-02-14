@@ -15,27 +15,19 @@ class MainController: UITabBarController {
         
         let homeController = HomeViewController()
         homeController.tabBarItem.title = "Home"
-        homeController.tabBarItem.image = UIImage(
-            icon:.ionicons(.home),
-            size: CGSize(width: 30, height: 30))
+        homeController.tabBarItem.image = UIImage(icon:.ionicons(.home), size: CGSize(width: 30, height: 30))
 
         let v1 = UIViewController()
         v1.tabBarItem.title = "Activity"
-        v1.tabBarItem.image = UIImage(
-            icon: .ionicons(.arrowGraphUpRight),
-            size: CGSize(width: 30, height: 30))
+        v1.tabBarItem.image = UIImage(icon: .ionicons(.arrowGraphUpRight), size: CGSize(width: 30, height: 30))
         
         let v2 = UIViewController()
         v2.tabBarItem.title = "History"
-        v2.tabBarItem.image = UIImage(
-            icon: .ionicons(.clock),
-            size: CGSize(width: 30, height: 30))
+        v2.tabBarItem.image = UIImage(icon: .ionicons(.clock), size: CGSize(width: 30, height: 30))
         
         let v3 = UIViewController()
         v3.tabBarItem.title = "Settings"
-        v3.tabBarItem.image = UIImage(
-            icon: .ionicons(.gearA),
-            size: CGSize(width: 30, height: 30))
+        v3.tabBarItem.image = UIImage(icon: .ionicons(.gearA), size: CGSize(width: 30, height: 30))
         
         self.viewControllers = [homeController, v1, v2, v3]
         self.selectedViewController = homeController

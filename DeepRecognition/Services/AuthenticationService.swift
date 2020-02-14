@@ -10,17 +10,15 @@ import Foundation
 import Alamofire
 import SwiftKeychainWrapper
 
-fileprivate let tokenUrl = "https://app.7geese.com/o/token/"
-fileprivate let clientId: String = "xebVxA8Syn5C9fRAL4ySdwnMhAsCgGIlaBnNAnfO"
-fileprivate let clientSecret: String = "VPpnoVE4aBOXHGXvPKiiq9gbUoNRQqxKIcHEM8Oi5ghhUqt0F26EMcoRmuOVMMSjTwhZsPZlK5G78MPk7SXPMj6nGWApBEJXRne5DzQaIRjwXqMcxc13IplppzkqYFSN"
-fileprivate let scope: String  = "all"
-
-class AuthService {
-    private var current: AuthState?
+class AuthenticationService: AuthenticationServiceProtocol {
+    private let tokenUrl = "\(AppSettings.baseUrl)/o/token/"
+    private let clientId: String = "xebVxA8Syn5C9fRAL4ySdwnMhAsCgGIlaBnNAnfO"
+    private let clientSecret: String = "VPpnoVE4aBOXHGXvPKiiq9gbUoNRQqxKIcHEM8Oi5ghhUqt0F26EMcoRmuOVMMSjTwhZsPZlK5G78MPk7SXPMj6nGWApBEJXRne5DzQaIRjwXqMcxc13IplppzkqYFSN"
+    private let scope: String  = "all"
     
     @discardableResult
-    public func persistSession(_ session: AuthState) -> Bool {
-        self.current = session
+    public func persistSession(_ session: SessionState) -> Bool {
+        Session.shared.current = session
 
         guard let data = try? JSONEncoder().encode(session) else {
             return false
@@ -37,28 +35,26 @@ class AuthService {
     
     public func checkSession() -> Bool {
         guard let data = KeychainWrapper.standard.data(forKey: ".auth"),
-            let session = try? JSONDecoder().decode(AuthState.self, from: data),
+            let session = try? JSONDecoder().decode(SessionState.self, from: data),
             let expiration = KeychainWrapper.standard.double(forKey: ".auth.expiration") else {
             
             return false
         }
         
         if expiration > Date().timeIntervalSince1970 {
-            self.current = session
+            Session.shared.current = session
             return true
+        } else {
+            // TODO: Try to refresh access token
         }
         
         return false
     }
     
-    public func getSession() -> AuthState? {
-        return current
-    }
-    
-    func signIn(
+    public func signIn(
         withUsername username: String,
         password: String,
-        handler: @escaping (_ result: Bool)-> Void) {
+        handler: @escaping ((success: Bool, error: String?)) -> Void) {
         
         let parameters = [
             "grant_type": "password",
@@ -72,12 +68,17 @@ class AuthService {
         ]
         
         AF.request(tokenUrl, method: .post, parameters: parameters, headers: headers).response { response in
-            if let data = response.data, let result = try? JSONDecoder().decode(AuthState.self, from: data) {
-                self.persistSession(result)
-                
-                handler(true)
-            } else {
-                handler(false)
+            switch (response.result) {
+            case .success(let data):
+                do {
+                    let session = try JSONDecoder().decode(SessionState.self, from: data!)
+                    self.persistSession(session)
+                    handler((true, nil))
+                } catch {
+                    handler((false, "\(error)"))
+                }
+            case .failure(let error):
+                handler((false, "\(error)"))
             }
         }
     }

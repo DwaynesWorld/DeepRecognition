@@ -2,23 +2,27 @@ PODS:
   - Alamofire (5.0.0-rc.3)
   - SwiftIcons (2.3.2)
   - SwiftKeychainWrapper (3.4.0)
+  - Swinject (2.7.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
   - SwiftIcons (~> 2.3.2)
   - SwiftKeychainWrapper
+  - Swinject
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - SwiftIcons
     - SwiftKeychainWrapper
+    - Swinject
 
 SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
   SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 5ba30b6e5b078d2ff86695b368e934a55424ebd0
+PODFILE CHECKSUM: e99377e683205f67dd2be6074ed67cef2a5d6657
 
 COCOAPODS: 1.8.4

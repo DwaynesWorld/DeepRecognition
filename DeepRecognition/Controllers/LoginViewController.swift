@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     var isLoggingIn = true
-    let auth = AuthService() // TODO: Setup DI
+    let authenticationService = AppDelegate.container.resolve(AuthenticationServiceProtocol.self)!
     
     unowned var loginView: LoginView { self.view as! LoginView }
     unowned var emailTextField: UITextField { loginView.emailTextField }
@@ -23,14 +23,16 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        setupActions()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         if isSignedIn() {
             let home = HomeViewController()
             home.modalPresentationStyle = .fullScreen
             self.present(home, animated: true, completion: nil)
         }
-        
-        setupActions()
     }
     
     public override func loadView() {
@@ -38,7 +40,7 @@ class LoginViewController: UIViewController {
     }
     
     private func isSignedIn() -> Bool {
-        return self.auth.checkSession()
+        return self.authenticationService.checkSession()
     }
     
     private func setupActions() {
@@ -65,14 +67,13 @@ class LoginViewController: UIViewController {
             return
         }
         
-        self.auth.signIn(withUsername: email, password: password) { success in
-            if success {
+        self.authenticationService.signIn(withUsername: email, password: password) { result in
+            if result.success {
                 let home = HomeViewController()
                 home.modalPresentationStyle = .fullScreen
                 self.present(home, animated: true, completion: nil)
-            }
-            else {
-                print("invalid login")
+            } else {
+                print("Invalid login: \(result.error ?? "An unexpected error has occurred.")")
             }
         }
     }

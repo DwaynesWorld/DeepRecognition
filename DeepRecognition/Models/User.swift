@@ -9,17 +9,17 @@
 import Foundation
 
 struct User: Codable {
-    let url, id, username, firstName: String
-    let lastName, email: String
-    let isActive: Bool
-    let dateJoined: String
+    let firstName: String?
+    let lastName: String?
+    let isActive: Bool?
+    let email: String?
+    let dateJoined: String?
 
     enum CodingKeys: String, CodingKey {
-        case url, id, username
         case firstName = "first_name"
         case lastName = "last_name"
-        case email
         case isActive = "is_active"
+        case email = "email"
         case dateJoined = "date_joined"
     }
 }

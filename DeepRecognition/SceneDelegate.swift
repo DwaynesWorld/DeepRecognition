@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
         self.window?.windowScene = windowScene
         
-        let auth = AuthService()
+        let auth = AuthenticationService()
         if auth.checkSession() {
             self.window?.rootViewController = MainController()
         } else {

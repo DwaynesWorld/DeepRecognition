@@ -9,12 +9,20 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    private let userService = AppDelegate.container.resolve(UserServiceProtocol.self)!
+    private let departmentService = AppDelegate.container.resolve(DepartmentServiceProtocol.self)!
+    
+    private var currentUser: UserProfile?
+    private var departments = [Department]()
+    
     unowned var homeView: HomeView { self.view as! HomeView }
-
+    unowned var greetingLabel: UILabel { homeView.greetingLabel }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadUserInfo()
+        loadDepartments()
     }
     
     
@@ -23,31 +31,31 @@ class HomeViewController: UIViewController {
     }
     
     func loadUserInfo() {
-//        guard let oauth2 = Authentication.shared.oauth2 else { fatalError() }
-//        
-//        let baseUrl = URL(string: "https://app.7geese.com:443/api/v/2.0/")!
-//        let url = baseUrl.appendingPathComponent("userprofiles")
-//        
-//        print(oauth2.accessToken ?? "none")
-//        
-//        let request = oauth2.request(forURL: url)
-//        let loader = OAuth2DataLoader(oauth2: oauth2)
-//        
-//        loader.perform(request: request) { response in
-//            if let data = response.data {
-//                let decoder = JSONDecoder()
-//                let userProfiles = try? decoder.decode([UserProfile].self, from: data)
-//                if let profiles = userProfiles {
-//                    DispatchQueue.main.async {
-//                        print(profiles)
-//                    }
-//                }
-//            } else {
-//                DispatchQueue.main.async {
-//                    print("error occurred")
-//                }
-//            }
-//        }
+        self.userService.getCurrentUser { result in
+            if let profile = result.data {
+                self.currentUser = profile
+                
+                if let firstName = profile.user.firstName {
+                    self.greetingLabel.text = "Hello, \(firstName)"
+                }
+            } else {
+                // show oops.
+                print(result.error ?? "The operation couldn’t be completed.")
+            }
+        }
     }
     
+    func loadDepartments() {
+        self.departmentService.getDepartments { result in
+            if let data = result.data {
+                self.departments = data.results
+                for d in self.departments {
+                    print(d.name!)
+                }
+            } else {
+                // show oops.
+                print(result.error ?? "The operation couldn’t be completed.")
+            }
+        }
+    }
 }

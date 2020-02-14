@@ -11,7 +11,7 @@ import UIKit
 class HomeView: BaseView {
     public let greetingLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hello, Kyle"
+        label.text = "Hello"
         label.textAlignment = .center
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 26, weight: UIFont.Weight.heavy)
