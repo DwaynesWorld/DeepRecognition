@@ -17,19 +17,19 @@ class MainController: UITabBarController {
         homeController.tabBarItem.title = "Home"
         homeController.tabBarItem.image = UIImage(icon:.ionicons(.home), size: CGSize(width: 30, height: 30))
 
-        let v1 = UIViewController()
+        let v1 = BaseViewController()
         v1.tabBarItem.title = "Activity"
         v1.tabBarItem.image = UIImage(icon: .ionicons(.arrowGraphUpRight), size: CGSize(width: 30, height: 30))
         
-        let v2 = UIViewController()
+        let v2 = BaseViewController()
         v2.tabBarItem.title = "History"
         v2.tabBarItem.image = UIImage(icon: .ionicons(.clock), size: CGSize(width: 30, height: 30))
         
-        let v3 = UIViewController()
-        v3.tabBarItem.title = "Settings"
-        v3.tabBarItem.image = UIImage(icon: .ionicons(.gearA), size: CGSize(width: 30, height: 30))
+        let settingsController = SettingsViewController()
+        settingsController.tabBarItem.title = "Settings"
+        settingsController.tabBarItem.image = UIImage(icon: .ionicons(.gearA), size: CGSize(width: 30, height: 30))
         
-        self.viewControllers = [homeController, v1, v2, v3]
+        self.viewControllers = [homeController, v1, v2, settingsController]
         self.selectedViewController = homeController
         self.tabBar.barTintColor = .white
         self.tabBar.tintColor = .rgb(196, 73, 76)
@@ -40,3 +40,5 @@ class MainController: UITabBarController {
         self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 }
+
+class SettingsViewController: UIViewController {}

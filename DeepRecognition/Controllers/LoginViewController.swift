@@ -10,8 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var isLoggingIn = true
-    let authenticationService = AppDelegate.container.resolve(AuthenticationServiceProtocol.self)!
+    private var isLoggingIn = true
+    private let authenticationService = AppDelegate.container.resolve(AuthenticationServiceProtocol.self)!
     
     unowned var loginView: LoginView { self.view as! LoginView }
     unowned var emailTextField: UITextField { loginView.emailTextField }
@@ -28,11 +28,11 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if isSignedIn() {
-            let home = HomeViewController()
-            home.modalPresentationStyle = .fullScreen
-            self.present(home, animated: true, completion: nil)
-        }
+//        if isSignedIn() {
+//            let home = HomeViewController()
+//            home.modalPresentationStyle = .fullScreen
+//            self.present(home, animated: true, completion: nil)
+//        }
     }
     
     public override func loadView() {
@@ -69,9 +69,9 @@ class LoginViewController: UIViewController {
         
         self.authenticationService.signIn(with: email, password: password) { result in
             if result.success {
-                let home = HomeViewController()
-                home.modalPresentationStyle = .fullScreen
-                self.present(home, animated: true, completion: nil)
+                let main = MainController()
+                main.modalPresentationStyle = .fullScreen
+                self.present(main, animated: true, completion: nil)
             } else {
                 print("Invalid login: \(result.error ?? "An unexpected error has occurred.")")
             }

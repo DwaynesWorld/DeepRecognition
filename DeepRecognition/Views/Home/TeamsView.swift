@@ -101,6 +101,7 @@ extension TeamsView:
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath) {
+        
         print("selected me \(indexPath.row)")
     }
     
@@ -108,6 +109,7 @@ extension TeamsView:
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         return CGSize(width: 270 , height: 295)
     }
     
@@ -115,6 +117,7 @@ extension TeamsView:
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
         return 20
     }
 }

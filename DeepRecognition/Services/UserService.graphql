@@ -1,20 +1,6 @@
 query GetUserById($id: Int!) {
   profile(pk: $id) {
-    pk
-    firstName
-    lastName
-    user{
-      email
-    }
-    reportsTo {
-      pk
-    }
-    profileImageUrl
-    activationState
-    isManager
-    position
-    phoneNumber
-    hireDate
+    ...userProfileFields
   }
 }
 
@@ -22,21 +8,7 @@ query GetUserByEmail($email: String!) {
   profiles(user_Email: $email) {
     edges {
       node {
-        pk
-        user {
-          email
-        }
-        firstName
-        lastName
-        reportsTo {
-          pk
-        }
-        profileImageUrl
-        activationState
-        isManager
-        position
-        phoneNumber
-        hireDate
+        ...userProfileFields
       }
     }
   }
@@ -46,23 +18,26 @@ query GetUsers($search: String) {
   profiles(search: $search) {
     edges {
       node {
-        pk
-        firstName
-        lastName
-        user {
-          email
-        }
-        reportsTo {
-          pk
-        }
-        profileImageUrl
-        activationState
-        isManager
-        position
-        phoneNumber
-        hireDate
+        ...userProfileFields
       }
     }
   }
 }
 
+fragment userProfileFields on UserProfileNode {
+  pk
+  user {
+    email
+  }
+  firstName
+  lastName
+  reportsTo {
+    pk
+  }
+  profileImageUrl
+  activationState
+  isManager
+  position
+  phoneNumber
+  hireDate
+}

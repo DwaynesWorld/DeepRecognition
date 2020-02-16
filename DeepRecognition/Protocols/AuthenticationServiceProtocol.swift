@@ -14,6 +14,8 @@ protocol AuthenticationServiceProtocol {
         password: String,
         handler: @escaping (_ result: (success: Bool, error: String?)) -> Void)
     
+    func signOut(handler: @escaping () -> Void)
+    
     func resfreshSession(
         with token: String,
         email: String,

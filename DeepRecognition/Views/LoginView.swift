@@ -144,7 +144,6 @@ class LoginView: BaseView {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 60),
             titleLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
-            logo.widthAnchor.constraint(equalToConstant: 150),
         ])
         
         NSLayoutConstraint.activate([
@@ -169,16 +168,16 @@ class LoginView: BaseView {
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: signupLabel.bottomAnchor, constant: 30),
             emailTextField.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 0),
-            emailTextField.rightAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.rightAnchor, constant: -50),
-            emailTextField.widthAnchor.constraint(greaterThanOrEqualToConstant: 250),
+            emailTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -50),
+//            emailTextField.widthAnchor.constraint(greaterThanOrEqualToConstant: 250),
             emailTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         NSLayoutConstraint.activate([
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10),
             passwordTextField.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 0),
-            passwordTextField.rightAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.rightAnchor, constant: -50),
-            passwordTextField.widthAnchor.constraint(greaterThanOrEqualToConstant: 250),
+            passwordTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -50),
+            //passwordTextField.widthAnchor.constraint(greaterThanOrEqualToConstant: 250),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
         

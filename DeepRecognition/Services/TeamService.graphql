@@ -1,16 +1,14 @@
+query GetTeamById($pk: Int!) {
+  team(pk: $pk) {
+    ...teamFields
+  }
+}
+
 query GetTeams {
-  teams(hasParent: false,  orderBy: "name") {
+  teams(hasParent: false, orderBy: "name") {
     edges {
       node {
-        pk
-        parent {
-          pk
-        }
-        fullName
-        name
-        allMembers {
-          totalCount
-        }
+        ...teamFields
       }
     }
   }
@@ -20,16 +18,20 @@ query GetChildTeams($parent: Float!) {
   teams(parent: $parent,  orderBy: "name") {
     edges {
       node {
-        pk
-        parent {
-          pk
-        }
-        fullName
-        name
-        allMembers {
-          totalCount
-        }
+        ...teamFields
       }
     }
+  }
+}
+
+fragment teamFields on TeamNode {
+  pk
+  parent {
+    pk
+  }
+  fullName
+  name
+  allMembers {
+    totalCount
   }
 }

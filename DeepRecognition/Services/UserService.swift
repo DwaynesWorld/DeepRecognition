@@ -20,18 +20,7 @@ class UserService: UserServiceProtocol {
             switch response {
             case .success(let result):
                 if let p = result.data?.profile {
-                    let profile = UserProfile(
-                        id: p.pk,
-                        email: p.user.email,
-                        firstName: p.firstName,
-                        lastName: p.lastName,
-                        reportsTo: p.reportsTo?.pk,
-                        activationState: p.activationState,
-                        isManager: p.isManager,
-                        profileImageUrl: p.profileImageUrl,
-                        position: p.position,
-                        phoneNumber: p.phoneNumber,
-                        hireDate: p.hireDate)
+                    let profile = try! self.mapProfiles(from: p.fragments.userProfileFields)
                     
                     handler((profile, nil))
                 } else if let errors = result.errors {
@@ -53,7 +42,10 @@ class UserService: UserServiceProtocol {
             switch response {
             case .success(let result):
                 do {
-                    let profiles = try result.data?.profiles?.edges.map { try self.mapProfiles(from: $0) }
+                    let profiles = try result.data?.profiles?.edges.map {
+                        try self.mapProfiles(from: $0?.node?.fragments.userProfileFields)
+                    }
+                    
                     handler((profiles!.first!, nil))
                 } catch {
                     handler((nil, RequestError.unexpectedResponse(error: "\(error)")))
@@ -75,7 +67,10 @@ class UserService: UserServiceProtocol {
             switch response {
             case .success(let result):
                 do {
-                    let profiles = try result.data?.profiles?.edges.map { try self.mapProfiles(from: $0) }
+                    let profiles = try result.data?.profiles?.edges.map {
+                        try self.mapProfiles(from: $0?.node?.fragments.userProfileFields)
+                    }
+                    
                     handler((profiles, nil))
                 } catch {
                     handler((nil, RequestError.unexpectedResponse(error: "\(error)")))
@@ -87,41 +82,22 @@ class UserService: UserServiceProtocol {
     }
     
     
-    private func mapProfiles(from edge: GetUserByEmailQuery.Data.Profile.Edge?) throws -> UserProfile {
-        guard let n = edge?.node else {
-            throw RequestError.unexpectedResponse(error: "invalid nodes")
+    private func mapProfiles(from fields: UserProfileFields?) throws -> UserProfile {
+        guard let f = fields else {
+            throw RequestError.unexpectedResponse(error: "invalid fields")
         }
         
         return UserProfile(
-            id: n.pk,
-            email: n.user.email,
-            firstName: n.firstName,
-            lastName: n.lastName,
-            reportsTo: n.reportsTo?.pk,
-            activationState: n.activationState,
-            isManager: n.isManager,
-            profileImageUrl: n.profileImageUrl,
-            position: n.position,
-            phoneNumber: n.phoneNumber,
-            hireDate: n.hireDate)
-    }
-    
-    private func mapProfiles(from edge: GetUsersQuery.Data.Profile.Edge?) throws -> UserProfile {
-        guard let n = edge?.node else {
-            throw RequestError.unexpectedResponse(error: "invalid nodes")
-        }
-        
-        return UserProfile(
-            id: n.pk,
-            email: n.user.email,
-            firstName: n.firstName,
-            lastName: n.lastName,
-            reportsTo: n.reportsTo?.pk,
-            activationState: n.activationState,
-            isManager: n.isManager,
-            profileImageUrl: n.profileImageUrl,
-            position: n.position,
-            phoneNumber: n.phoneNumber,
-            hireDate: n.hireDate)
+            id: f.pk,
+            email: f.user.email,
+            firstName: f.firstName,
+            lastName: f.lastName,
+            reportsTo: f.reportsTo?.pk,
+            activationState: f.activationState,
+            isManager: f.isManager,
+            profileImageUrl: f.profileImageUrl,
+            position: f.position,
+            phoneNumber: f.phoneNumber,
+            hireDate: f.hireDate)
     }
 }

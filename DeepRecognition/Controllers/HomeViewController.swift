@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     private let userService = AppDelegate.container.resolve(UserServiceProtocol.self)!
     private let teamService = AppDelegate.container.resolve(TeamServiceProtocol.self)!
     
@@ -56,5 +56,9 @@ class HomeViewController: UIViewController {
                 print(result.error ?? "The operation couldn’t be completed.")
             }
         }
+    }
+    
+    deinit {
+        print("Releasing")
     }
 }

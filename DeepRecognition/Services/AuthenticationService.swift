@@ -81,6 +81,15 @@ class AuthenticationService: AuthenticationServiceProtocol {
         }
     }
     
+    func signOut(handler: @escaping () -> Void) {
+        Session.shared.current = nil
+        Session.shared.currentUserEmail = nil
+        KeychainWrapper.standard.removeObject(forKey: ".auth.expiration")
+        KeychainWrapper.standard.removeObject(forKey: ".auth.email")
+        KeychainWrapper.standard.removeObject(forKey: ".auth")
+        handler()
+    }
+    
     public func checkSession() -> Bool {
         guard let data = KeychainWrapper.standard.data(forKey: ".auth"),
             let session = try? JSONDecoder().decode(SessionState.self, from: data),
