@@ -19,7 +19,7 @@ class ContainerFactory {
         let container = Container()
         container.register(AuthenticationServiceProtocol.self) { _ in AuthenticationService() }.inObjectScope(.container)
         container.register(UserServiceProtocol.self) { _ in UserService() }.inObjectScope(.transient)
-        container.register(DepartmentServiceProtocol.self) { _ in DepartmentService() }.inObjectScope(.transient)
+        container.register(TeamServiceProtocol.self) { _ in TeamService() }.inObjectScope(.transient)
         return container
     }
 }

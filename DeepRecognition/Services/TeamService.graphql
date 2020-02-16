@@ -1,0 +1,35 @@
+query GetTeams {
+  teams(hasParent: false,  orderBy: "name") {
+    edges {
+      node {
+        pk
+        parent {
+          pk
+        }
+        fullName
+        name
+        allMembers {
+          totalCount
+        }
+      }
+    }
+  }
+}
+
+query GetChildTeams($parent: Float!) {
+  teams(parent: $parent,  orderBy: "name") {
+    edges {
+      node {
+        pk
+        parent {
+          pk
+        }
+        fullName
+        name
+        allMembers {
+          totalCount
+        }
+      }
+    }
+  }
+}

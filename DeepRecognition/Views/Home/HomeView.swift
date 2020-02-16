@@ -37,8 +37,8 @@ class HomeView: BaseView {
         return view
     }()
     
-    public let groupsSection: GroupCollectionView = {
-        let view = GroupCollectionView(frame: .zero)
+    public let teamSection: TeamsView = {
+        let view = TeamsView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -59,7 +59,7 @@ class HomeView: BaseView {
         addSubview(greetingLabel)
         addSubview(promptLabel)
         addSubview(searchView)
-        addSubview(groupsSection)
+        addSubview(teamSection)
     }
     
     private func setupConstraints() {
@@ -83,10 +83,10 @@ class HomeView: BaseView {
         ])
         
         NSLayoutConstraint.activate([
-            groupsSection.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 40),
-            groupsSection.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            groupsSection.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            groupsSection.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 20)
+            teamSection.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 40),
+            teamSection.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
+            teamSection.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            teamSection.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 20)
         ])
     }
 }

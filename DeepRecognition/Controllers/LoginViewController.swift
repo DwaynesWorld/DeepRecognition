@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        self.authenticationService.signIn(withUsername: email, password: password) { result in
+        self.authenticationService.signIn(with: email, password: password) { result in
             if result.success {
                 let home = HomeViewController()
                 home.modalPresentationStyle = .fullScreen

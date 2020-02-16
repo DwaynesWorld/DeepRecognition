@@ -10,32 +10,35 @@ import UIKit
 
 class HomeViewController: UIViewController {
     private let userService = AppDelegate.container.resolve(UserServiceProtocol.self)!
-    private let departmentService = AppDelegate.container.resolve(DepartmentServiceProtocol.self)!
+    private let teamService = AppDelegate.container.resolve(TeamServiceProtocol.self)!
     
-    private var currentUser: UserProfile?
-    private var departments = [Department]()
+    public var currentUser: UserProfile?
     
     unowned var homeView: HomeView { self.view as! HomeView }
     unowned var greetingLabel: UILabel { homeView.greetingLabel }
+    unowned var teamSection: TeamsView { homeView.teamSection }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadUserInfo()
-        loadDepartments()
+        loadTeams()
     }
-    
     
     public override func loadView() {
         view = HomeView()
     }
     
     func loadUserInfo() {
-        self.userService.getCurrentUser { result in
+        guard let email = Session.shared.currentUserEmail else {
+            return
+        }
+        
+        self.userService.getUser(fromEmail: email) { result in
             if let profile = result.data {
                 self.currentUser = profile
                 
-                if let firstName = profile.user.firstName {
+                if let firstName = profile.firstName {
                     self.greetingLabel.text = "Hello, \(firstName)"
                 }
             } else {
@@ -45,15 +48,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func loadDepartments() {
-        self.departmentService.getDepartments { result in
-            if let data = result.data {
-                self.departments = data.results
-                for d in self.departments {
-                    print(d.name!)
-                }
+    func loadTeams() {
+        self.teamService.getTeams { result in
+            if let teams = result.data {
+                self.teamSection.teams = teams.filter { $0.employeeCount > 0 }
             } else {
-                // show oops.
                 print(result.error ?? "The operation couldn’t be completed.")
             }
         }

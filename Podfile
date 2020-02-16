@@ -8,6 +8,7 @@ target 'DeepRecognition' do
 
   # Pods for DeepRecognition
   pod 'Alamofire', '~> 5.0.0-rc.3'
+  pod "Apollo"
   pod 'SwiftIcons', '~> 2.3.2'
   pod 'Swinject'
   pod 'SwiftKeychainWrapper'

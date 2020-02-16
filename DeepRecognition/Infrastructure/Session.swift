@@ -9,7 +9,17 @@
 import Foundation
 
 class Session {
-    public var current: SessionState? = nil
+    public var current: SessionState? {
+        didSet {
+            
+        }
+    }
+    
+    public var currentUserEmail: String? {
+        didSet {
+            
+        }
+    }
     
     public static var shared = Session()
     private init() {}

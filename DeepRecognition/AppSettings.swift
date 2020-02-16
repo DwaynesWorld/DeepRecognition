@@ -10,5 +10,4 @@ import Foundation
 
 struct AppSettings {
     static let baseUrl: String = "https://app.7geese.com"
-//    static let baseApiUrl: String = "https://app.7geese.com/api/v/2.0"
 }

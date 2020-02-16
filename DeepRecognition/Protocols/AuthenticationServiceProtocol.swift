@@ -9,8 +9,15 @@
 import Foundation
 
 protocol AuthenticationServiceProtocol {
-    @discardableResult
-    func persistSession(_ session: SessionState) -> Bool
+    func signIn(
+        with email: String,
+        password: String,
+        handler: @escaping (_ result: (success: Bool, error: String?)) -> Void)
+    
+    func resfreshSession(
+        with token: String,
+        email: String,
+        handler: @escaping (_ success: Bool) -> Void)
+    
     func checkSession() -> Bool
-    func signIn(withUsername username: String, password: String, handler: @escaping (_ result: (success: Bool, error: String?)) -> Void)
 }
