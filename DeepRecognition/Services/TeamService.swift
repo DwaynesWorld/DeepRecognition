@@ -9,7 +9,7 @@
 import Foundation
 
 class TeamService: TeamServiceProtocol {
-    func getTeam(from id: Int, handler: @escaping ((data: Team?, error: RequestError?)) -> Void) {
+    func getTeam(from id: Int, completion: @escaping ((data: Team?, error: RequestError?)) -> Void) {
         let client = Apollo.shared.client
 
         client.fetch(query: GetTeamByIdQuery(pk: id)) { response in
@@ -17,17 +17,17 @@ class TeamService: TeamServiceProtocol {
             case .success(let result):
                 if let t = result.data?.team {
                     let team = try! self.mapTeams(from: t.fragments.teamFields)
-                    handler((team, nil))
+                    completion((team, nil))
                 } else if let errors = result.errors {
-                    handler((nil, RequestError.unexpectedResponse(error: "\(errors)")))
+                    completion((nil, RequestError.unexpectedResponse(error: "\(errors)")))
                 }
             case .failure(let error):
-                handler((nil, RequestError.invalidRequest(error: "\(error)")))
+                completion((nil, RequestError.invalidRequest(error: "\(error)")))
             }
         }
     }
     
-    func getTeams(handler: @escaping ((data: [Team]?, error: RequestError?)) -> Void) {
+    func getTeams(completion: @escaping ((data: [Team]?, error: RequestError?)) -> Void) {
         let client = Apollo.shared.client
 
         client.fetch(query: GetTeamsQuery()) { response in
@@ -38,12 +38,12 @@ class TeamService: TeamServiceProtocol {
                         try self.mapTeams(from: $0?.node?.fragments.teamFields)
                     }
                     
-                    handler((teams, nil))
+                    completion((teams, nil))
                 } catch {
-                    handler((nil, RequestError.unexpectedResponse(error: "\(error)")))
+                    completion((nil, RequestError.unexpectedResponse(error: "\(error)")))
                 }
             case .failure(let error):
-                handler((nil, RequestError.invalidRequest(error: "\(error)")))
+                completion((nil, RequestError.invalidRequest(error: "\(error)")))
             }
         }
     }

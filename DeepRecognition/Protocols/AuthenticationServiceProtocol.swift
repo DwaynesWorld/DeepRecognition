@@ -12,14 +12,14 @@ protocol AuthenticationServiceProtocol {
     func signIn(
         with email: String,
         password: String,
-        handler: @escaping (_ result: (success: Bool, error: String?)) -> Void)
+        completion: @escaping (_ result: (success: Bool, error: String?)) -> Void)
     
-    func signOut(handler: @escaping () -> Void)
+    func signOut(completion: @escaping () -> Void)
     
     func resfreshSession(
         with token: String,
         email: String,
-        handler: @escaping (_ success: Bool) -> Void)
+        completion: @escaping (_ success: Bool) -> Void)
     
     func checkSession() -> Bool
 }

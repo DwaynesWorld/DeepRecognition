@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftIcons
 
 class SettingsManager: NSObject {
     var currentController: BaseViewController?
@@ -16,13 +17,29 @@ class SettingsManager: NSObject {
     let dimmedView: UIView = UIView()
     
     let settings: [Setting] = {
+        let size = CGSize(width: 25, height: 25)
+        let color = UIColor.darkGray
+        
         return [
-            Setting(name: .settings, imageName: "settings"),
-            Setting(name: .terms, imageName: "terms"),
-            Setting(name: .feedback, imageName: "feedback"),
-            Setting(name: .help, imageName: "help"),
-            Setting(name: .switchAccounts, imageName: "account"),
-            Setting(name: .cancel, imageName: "close"),
+            Setting(
+                name: .feedback,
+                image: .init(icon: .ionicons(IoniconsType.chatboxWorking), size: size, textColor: color)),
+            
+            Setting(
+                name: .terms,
+                image: .init(icon: .ionicons(IoniconsType.documentText), size: size, textColor: color)),
+            
+            Setting(
+                name: .help,
+                image: .init(icon: .ionicons(IoniconsType.help), size: size, textColor: color)),
+            
+            Setting(
+                name: .logout,
+                image: .init(icon: .ionicons(IoniconsType.logOut), size: size, textColor: color)),
+            
+            Setting(
+                name: .cancel,
+                image: .init(icon: .ionicons(IoniconsType.close), size: size, textColor: color)),
         ]
     }()
     
@@ -35,6 +52,9 @@ class SettingsManager: NSObject {
         let layout = UICollectionViewFlowLayout()
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = .white
+        view.layer.masksToBounds = true
+        view.layer.cornerRadius = 20
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.isScrollEnabled = false
         view.delegate = self
         view.dataSource = self

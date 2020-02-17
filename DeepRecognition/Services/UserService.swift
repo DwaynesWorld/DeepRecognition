@@ -12,7 +12,7 @@ import Alamofire
 class UserService: UserServiceProtocol {
     func getUser(
         fromId id: Int,
-        handler: @escaping ((data: UserProfile?, error: RequestError?)) -> Void) {
+        completion: @escaping ((data: UserProfile?, error: RequestError?)) -> Void) {
         
         let client = Apollo.shared.client
         
@@ -22,19 +22,19 @@ class UserService: UserServiceProtocol {
                 if let p = result.data?.profile {
                     let profile = try! self.mapProfiles(from: p.fragments.userProfileFields)
                     
-                    handler((profile, nil))
+                    completion((profile, nil))
                 } else if let errors = result.errors {
-                    handler((nil, RequestError.unexpectedResponse(error: "\(errors)")))
+                    completion((nil, RequestError.unexpectedResponse(error: "\(errors)")))
                 }
             case .failure(let error):
-                handler((nil, RequestError.invalidRequest(error: "\(error)")))
+                completion((nil, RequestError.invalidRequest(error: "\(error)")))
             }
         }
     }
     
     func getUser(
         fromEmail email: String,
-        handler: @escaping ((data: UserProfile?, error: RequestError?)) -> Void) {
+        completion: @escaping ((data: UserProfile?, error: RequestError?)) -> Void) {
         
         let client = Apollo.shared.client
         
@@ -46,12 +46,12 @@ class UserService: UserServiceProtocol {
                         try self.mapProfiles(from: $0?.node?.fragments.userProfileFields)
                     }
                     
-                    handler((profiles!.first!, nil))
+                    completion((profiles!.first!, nil))
                 } catch {
-                    handler((nil, RequestError.unexpectedResponse(error: "\(error)")))
+                    completion((nil, RequestError.unexpectedResponse(error: "\(error)")))
                 }
             case .failure(let error):
-                handler((nil, RequestError.invalidRequest(error: "\(error)")))
+                completion((nil, RequestError.invalidRequest(error: "\(error)")))
             }
         }
         
@@ -59,7 +59,7 @@ class UserService: UserServiceProtocol {
     
     func getUsers(
         fromSearch search: String = "",
-        handler: @escaping ((data: [UserProfile]?, error: RequestError?)) -> Void) {
+        completion: @escaping ((data: [UserProfile]?, error: RequestError?)) -> Void) {
         
         let client = Apollo.shared.client
 
@@ -71,12 +71,12 @@ class UserService: UserServiceProtocol {
                         try self.mapProfiles(from: $0?.node?.fragments.userProfileFields)
                     }
                     
-                    handler((profiles, nil))
+                    completion((profiles, nil))
                 } catch {
-                    handler((nil, RequestError.unexpectedResponse(error: "\(error)")))
+                    completion((nil, RequestError.unexpectedResponse(error: "\(error)")))
                 }
             case .failure(let error):
-                handler((nil, RequestError.invalidRequest(error: "\(error)")))
+                completion((nil, RequestError.invalidRequest(error: "\(error)")))
             }
         }
     }

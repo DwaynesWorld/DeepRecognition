@@ -25,7 +25,7 @@ class BaseViewController: UIViewController {
     
     func handleSelection(forSetting setting: Setting) {
         switch setting.name {
-        case SettingName.switchAccounts:
+        case SettingName.logout:
             self.authenticationService.signOut { [unowned self] in
                 let login = LoginViewController()
                 login.modalPresentationStyle = .fullScreen

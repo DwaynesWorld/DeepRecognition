@@ -20,7 +20,7 @@ class AuthenticationService: AuthenticationServiceProtocol {
     func resfreshSession(
         with token: String,
         email: String,
-        handler: @escaping (_ success: Bool) -> Void) {
+        completion: @escaping (_ success: Bool) -> Void) {
         
         let parameters = [
             "grant_type": "refresh_token",
@@ -37,14 +37,14 @@ class AuthenticationService: AuthenticationServiceProtocol {
                 do {
                     let session = try JSONDecoder().decode(SessionState.self, from: data!)
                     self.persistSession(session, email: email)
-                    handler(true)
+                    completion(true)
                 } catch {
                     print(error)
-                    handler(false)
+                    completion(false)
                 }
             case .failure(let error):
                 print(error)
-                handler(false)
+                completion(false)
             }
         }
     }
@@ -52,7 +52,7 @@ class AuthenticationService: AuthenticationServiceProtocol {
     public func signIn(
         with email: String,
         password: String,
-        handler: @escaping ((success: Bool, error: String?)) -> Void) {
+        completion: @escaping ((success: Bool, error: String?)) -> Void) {
         
         let parameters = [
             "grant_type": "password",
@@ -71,23 +71,23 @@ class AuthenticationService: AuthenticationServiceProtocol {
                 do {
                     let session = try JSONDecoder().decode(SessionState.self, from: data!)
                     self.persistSession(session, email: email)
-                    handler((true, nil))
+                    completion((true, nil))
                 } catch {
-                    handler((false, "\(error)"))
+                    completion((false, "\(error)"))
                 }
             case .failure(let error):
-                handler((false, "\(error)"))
+                completion((false, "\(error)"))
             }
         }
     }
     
-    func signOut(handler: @escaping () -> Void) {
+    func signOut(completion: @escaping () -> Void) {
         Session.shared.current = nil
         Session.shared.currentUserEmail = nil
         KeychainWrapper.standard.removeObject(forKey: ".auth.expiration")
         KeychainWrapper.standard.removeObject(forKey: ".auth.email")
         KeychainWrapper.standard.removeObject(forKey: ".auth")
-        handler()
+        completion()
     }
     
     public func checkSession() -> Bool {

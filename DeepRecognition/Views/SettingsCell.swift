@@ -15,6 +15,7 @@ class SettingsCell: BaseCell {
         didSet {
             if let setting = setting {
                 nameLabel.text = setting.name.rawValue
+                iconImageView.image = setting.icon
             }
         }
     }
@@ -29,8 +30,6 @@ class SettingsCell: BaseCell {
     
     let iconImageView: UIImageView = {
         let view = UIImageView()
-        view.tintColor = .darkGray
-        view.contentMode = .scaleAspectFill
         return view
     }()
     

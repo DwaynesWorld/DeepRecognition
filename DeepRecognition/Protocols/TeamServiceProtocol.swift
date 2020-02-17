@@ -9,5 +9,5 @@
 import Foundation
 
 protocol TeamServiceProtocol {
-    func getTeams(handler: @escaping (_ result: (data: [Team]?, error: RequestError?)) -> Void)
+    func getTeams(completion: @escaping (_ result: (data: [Team]?, error: RequestError?)) -> Void)
 }

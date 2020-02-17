@@ -10,11 +10,11 @@ import UIKit
 
 class Setting: NSObject {
     let name: SettingName
-    let imageName: String
+    let icon: UIImage
     
-    init(name: SettingName, imageName: String) {
+    init(name: SettingName, image: UIImage) {
         self.name = name
-        self.imageName = imageName
+        self.icon = image
     }
 }
 
@@ -23,7 +23,7 @@ enum SettingName: String {
     case terms = "Terms & Conditions"
     case feedback = "Send Feedback"
     case help = "Help"
-    case switchAccounts = "Switch Accounts"
+    case logout = "Logout"
     case cancel = "Cancel"
 }
 
