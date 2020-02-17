@@ -1,5 +1,5 @@
 //
-//  SettingsManager.swift
+//  SettingsViewController.swift
 //  DeepRecognition
 //
 //  Created by Kyle Thompson on 2/16/20.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftIcons
 
-class SettingsManager: NSObject {
+class SettingsViewController: NSObject {
     var currentController: BaseViewController?
 
     let cellId: String = "CellID"
@@ -135,7 +135,7 @@ class SettingsManager: NSObject {
 }
 
 
-extension SettingsManager:
+extension SettingsViewController:
     UICollectionViewDataSource,
     UICollectionViewDelegate,
     UICollectionViewDelegateFlowLayout {

@@ -11,10 +11,10 @@ import UIKit
 class BaseViewController: UIViewController {
     let authenticationService = AppDelegate.container.resolve(AuthenticationServiceProtocol.self)!
     
-    lazy var settingsManager: SettingsManager = {
-        let manager = SettingsManager()
-        manager.currentController = self
-        return manager
+    lazy var settingsViewController: SettingsViewController = {
+        let controller = SettingsViewController()
+        controller.currentController = self
+        return controller
     }()
 
     override func viewDidLoad() {
@@ -36,6 +36,5 @@ class BaseViewController: UIViewController {
             dummyViewController.view.backgroundColor = .lightGray
             present(dummyViewController, animated: true, completion: nil)
         }
-        
     }
 }

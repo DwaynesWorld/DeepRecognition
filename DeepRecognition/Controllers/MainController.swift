@@ -17,7 +17,7 @@ class MainController: UITabBarController {
         homeController.tabBarItem.title = "Home"
         homeController.tabBarItem.image = UIImage(icon:.ionicons(.home), size: CGSize(width: 30, height: 30))
 
-        let v1 = BaseViewController()
+        let v1 = TestViewController()
         v1.tabBarItem.title = "Activity"
         v1.tabBarItem.image = UIImage(icon: .ionicons(.arrowGraphUpRight), size: CGSize(width: 30, height: 30))
         
@@ -25,7 +25,7 @@ class MainController: UITabBarController {
         v2.tabBarItem.title = "History"
         v2.tabBarItem.image = UIImage(icon: .ionicons(.clock), size: CGSize(width: 30, height: 30))
         
-        let settingsController = SettingsViewController()
+        let settingsController = SettingsPlaceholderViewController()
         settingsController.tabBarItem.title = "Settings"
         settingsController.tabBarItem.image = UIImage(icon: .ionicons(.gearA), size: CGSize(width: 30, height: 30))
         
@@ -41,4 +41,4 @@ class MainController: UITabBarController {
     }
 }
 
-class SettingsViewController: UIViewController {}
+class SettingsPlaceholderViewController: UIViewController {}

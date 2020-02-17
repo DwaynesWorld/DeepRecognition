@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		680C784323FA2F1300E07FDF /* FloatingCollectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C784123FA2F1300E07FDF /* FloatingCollectionScene.swift */; };
+		680C784423FA2F1300E07FDF /* FloatingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C784223FA2F1300E07FDF /* FloatingNode.swift */; };
+		680C784623FA2F4000E07FDF /* FloatingCollectionSceneMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C784523FA2F4000E07FDF /* FloatingCollectionSceneMode.swift */; };
+		680C784823FA2F9900E07FDF /* FloatingNodeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C784723FA2F9900E07FDF /* FloatingNodeState.swift */; };
+		680C784A23FA2FCA00E07FDF /* FloatingCollectionSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C784923FA2FCA00E07FDF /* FloatingCollectionSceneDelegate.swift */; };
+		680C784C23FA39E600E07FDF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C784B23FA39E600E07FDF /* TestViewController.swift */; };
+		680C784F23FA39F400E07FDF /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C784D23FA39F400E07FDF /* BubbleNode.swift */; };
+		680C785023FA39F400E07FDF /* BubblesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680C784E23FA39F400E07FDF /* BubblesScene.swift */; };
 		681118D823F102F5001AF201 /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681118D723F102F5001AF201 /* TeamsView.swift */; };
 		681118DA23F11537001AF201 /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681118D923F11537001AF201 /* TeamCell.swift */; };
 		681118DC23F11579001AF201 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681118DB23F11579001AF201 /* BaseCell.swift */; };
 		681118DE23F12BF6001AF201 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681118DD23F12BF6001AF201 /* MainController.swift */; };
 		6825B96723F4E74800EA2375 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6825B96623F4E74800EA2375 /* UserService.swift */; };
-		6828B9B923F9D0AC007637F2 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6828B9B823F9D0AC007637F2 /* SettingsManager.swift */; };
+		6828B9B923F9D0AC007637F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6828B9B823F9D0AC007637F2 /* SettingsViewController.swift */; };
 		6828B9BB23F9D18A007637F2 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6828B9BA23F9D18A007637F2 /* Setting.swift */; };
 		6828B9BD23F9D1AA007637F2 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6828B9BC23F9D1AA007637F2 /* SettingsCell.swift */; };
 		6828B9BF23F9D5DE007637F2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6828B9BE23F9D5DE007637F2 /* BaseViewController.swift */; };
@@ -69,12 +77,20 @@
 /* Begin PBXFileReference section */
 		0FE297CEEFA1D6D850760A18 /* Pods-DeepRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepRecognition.debug.xcconfig"; path = "Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition.debug.xcconfig"; sourceTree = "<group>"; };
 		64123C9F3E428624CCBC4CCF /* Pods-DeepRecognition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepRecognition.release.xcconfig"; path = "Target Support Files/Pods-DeepRecognition/Pods-DeepRecognition.release.xcconfig"; sourceTree = "<group>"; };
+		680C784123FA2F1300E07FDF /* FloatingCollectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingCollectionScene.swift; sourceTree = "<group>"; };
+		680C784223FA2F1300E07FDF /* FloatingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingNode.swift; sourceTree = "<group>"; };
+		680C784523FA2F4000E07FDF /* FloatingCollectionSceneMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCollectionSceneMode.swift; sourceTree = "<group>"; };
+		680C784723FA2F9900E07FDF /* FloatingNodeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingNodeState.swift; sourceTree = "<group>"; };
+		680C784923FA2FCA00E07FDF /* FloatingCollectionSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCollectionSceneDelegate.swift; sourceTree = "<group>"; };
+		680C784B23FA39E600E07FDF /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		680C784D23FA39F400E07FDF /* BubbleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
+		680C784E23FA39F400E07FDF /* BubblesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblesScene.swift; sourceTree = "<group>"; };
 		681118D723F102F5001AF201 /* TeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsView.swift; sourceTree = "<group>"; };
 		681118D923F11537001AF201 /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		681118DB23F11579001AF201 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		681118DD23F12BF6001AF201 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		6825B96623F4E74800EA2375 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		6828B9B823F9D0AC007637F2 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		6828B9B823F9D0AC007637F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6828B9BA23F9D18A007637F2 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		6828B9BC23F9D1AA007637F2 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		6828B9BE23F9D5DE007637F2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +154,28 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		680C783623FA2A9700E07FDF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				680C783B23FA2B0500E07FDF /* FloatingCollection */,
+				680C784D23FA39F400E07FDF /* BubbleNode.swift */,
+				680C784E23FA39F400E07FDF /* BubblesScene.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		680C783B23FA2B0500E07FDF /* FloatingCollection */ = {
+			isa = PBXGroup;
+			children = (
+				680C784123FA2F1300E07FDF /* FloatingCollectionScene.swift */,
+				680C784923FA2FCA00E07FDF /* FloatingCollectionSceneDelegate.swift */,
+				680C784523FA2F4000E07FDF /* FloatingCollectionSceneMode.swift */,
+				680C784223FA2F1300E07FDF /* FloatingNode.swift */,
+				680C784723FA2F9900E07FDF /* FloatingNodeState.swift */,
+			);
+			path = FloatingCollection;
+			sourceTree = "<group>";
+		};
 		6825B96523F4E6CD00EA2375 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,14 +187,6 @@
 				6825B96623F4E74800EA2375 /* UserService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		6828B9C023F9D6FA007637F2 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				6828B9B823F9D0AC007637F2 /* SettingsManager.swift */,
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		683177B423E6049C008DD7EF /* Home */ = {
@@ -210,6 +240,7 @@
 		68674E8823DD038500A527E3 /* DeepRecognition */ = {
 			isa = PBXGroup;
 			children = (
+				680C783623FA2A9700E07FDF /* Components */,
 				68BB321323DD24C800E22E6C /* Models */,
 				68BB320623DD24C800E22E6C /* Views */,
 				68BB31FC23DD233200E22E6C /* Controllers */,
@@ -249,11 +280,12 @@
 		68BB31FC23DD233200E22E6C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6828B9C023F9D6FA007637F2 /* Managers */,
 				6828B9BE23F9D5DE007637F2 /* BaseViewController.swift */,
 				68BB322B23DD41B700E22E6C /* HomeViewController.swift */,
 				68674E8D23DD038500A527E3 /* LoginViewController.swift */,
 				681118DD23F12BF6001AF201 /* MainController.swift */,
+				6828B9B823F9D0AC007637F2 /* SettingsViewController.swift */,
+				680C784B23FA39E600E07FDF /* TestViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -442,6 +474,7 @@
 			files = (
 				68BB321623DD24C800E22E6C /* Colors.swift in Sources */,
 				683177B823E61516008DD7EF /* SearchView.swift in Sources */,
+				680C784C23FA39E600E07FDF /* TestViewController.swift in Sources */,
 				68674E8E23DD038500A527E3 /* LoginViewController.swift in Sources */,
 				686B8C7223F5F25A00590307 /* Session.swift in Sources */,
 				6828B9BD23F9D1AA007637F2 /* SettingsCell.swift in Sources */,
@@ -450,6 +483,8 @@
 				68BB321523DD24C800E22E6C /* ImageCache.swift in Sources */,
 				6825B96723F4E74800EA2375 /* UserService.swift in Sources */,
 				68BB321E23DD24C800E22E6C /* UIColor.swift in Sources */,
+				680C784323FA2F1300E07FDF /* FloatingCollectionScene.swift in Sources */,
+				680C784F23FA39F400E07FDF /* BubbleNode.swift in Sources */,
 				68674E8A23DD038500A527E3 /* AppDelegate.swift in Sources */,
 				683177B323E4F58A008DD7EF /* SessionState.swift in Sources */,
 				686B8C7023F5E7D200590307 /* RequestError.swift in Sources */,
@@ -462,10 +497,12 @@
 				68BB321723DD24C800E22E6C /* LoginView.swift in Sources */,
 				686B8C7523F60B9500590307 /* AuthenticationServiceProtocol.swift in Sources */,
 				681118D823F102F5001AF201 /* TeamsView.swift in Sources */,
+				680C784423FA2F1300E07FDF /* FloatingNode.swift in Sources */,
 				6879F8A923F8A0F8001FE58B /* Team.swift in Sources */,
 				6828B9BF23F9D5DE007637F2 /* BaseViewController.swift in Sources */,
 				6879F8A323F88175001FE58B /* Apollo.swift in Sources */,
-				6828B9B923F9D0AC007637F2 /* SettingsManager.swift in Sources */,
+				680C784A23FA2FCA00E07FDF /* FloatingCollectionSceneDelegate.swift in Sources */,
+				6828B9B923F9D0AC007637F2 /* SettingsViewController.swift in Sources */,
 				6853CDFB23F61F700077B4D9 /* TeamServiceProtocol.swift in Sources */,
 				68BB321D23DD24C800E22E6C /* UIView.swift in Sources */,
 				6828B9BB23F9D18A007637F2 /* Setting.swift in Sources */,
@@ -473,9 +510,12 @@
 				681118DA23F11537001AF201 /* TeamCell.swift in Sources */,
 				68BB321F23DD24C800E22E6C /* UIImageView.swift in Sources */,
 				681118DE23F12BF6001AF201 /* MainController.swift in Sources */,
+				680C785023FA39F400E07FDF /* BubblesScene.swift in Sources */,
+				680C784623FA2F4000E07FDF /* FloatingCollectionSceneMode.swift in Sources */,
 				68BB322023DD24C800E22E6C /* CMTime.swift in Sources */,
 				68BB322A23DD417800E22E6C /* HomeView.swift in Sources */,
 				686B8C7B23F60F8C00590307 /* ContainerFactory.swift in Sources */,
+				680C784823FA2F9900E07FDF /* FloatingNodeState.swift in Sources */,
 				686B8C6E23F5E5B300590307 /* AppSettings.swift in Sources */,
 				6879F8A123F87E77001FE58B /* API.swift in Sources */,
 			);
