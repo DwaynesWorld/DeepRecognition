@@ -3,6 +3,7 @@ PODS:
   - Apollo (0.22.0):
     - Apollo/Core (= 0.22.0)
   - Apollo/Core (0.22.0)
+  - lottie-ios (3.1.6)
   - SwiftIcons (2.3.2)
   - SwiftKeychainWrapper (3.4.0)
   - Swinject (2.7.1)
@@ -10,6 +11,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
   - Apollo
+  - lottie-ios
   - SwiftIcons (~> 2.3.2)
   - SwiftKeychainWrapper
   - Swinject
@@ -18,6 +20,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Apollo
+    - lottie-ios
     - SwiftIcons
     - SwiftKeychainWrapper
     - Swinject
@@ -25,10 +28,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   Apollo: 8644d2d62bcb94d281379e99c26c22109afa67ed
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
   SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 39ab101bc57b526b37fec9f7c902e9279db74058
+PODFILE CHECKSUM: f22783e6f84e914751cf3d6a9eb3026adfa53985
 
 COCOAPODS: 1.8.4

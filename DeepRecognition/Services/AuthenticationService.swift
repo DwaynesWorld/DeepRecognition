@@ -98,8 +98,10 @@ class AuthenticationService: AuthenticationServiceProtocol {
             
             return false
         }
-                
-        if expiration > Date().timeIntervalSince1970 + TimeInterval(15 * 60) {
+        
+        let validation = Date().timeIntervalSince1970 + TimeInterval(15 * 60)
+        
+        if expiration > validation  {
             Session.shared.current = session
             Session.shared.currentUserEmail = email
             

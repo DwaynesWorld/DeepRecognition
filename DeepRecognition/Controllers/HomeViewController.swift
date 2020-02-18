@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class HomeViewController: BaseViewController {
     private let userService = AppDelegate.container.resolve(UserServiceProtocol.self)!
@@ -16,17 +17,23 @@ class HomeViewController: BaseViewController {
     
     unowned var homeView: HomeView { self.view as! HomeView }
     unowned var greetingLabel: UILabel { homeView.greetingLabel }
+    unowned var searchView: SearchView { homeView.searchView }
     unowned var teamSection: TeamsView { homeView.teamSection }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupActions()
         loadUserInfo()
         loadTeams()
     }
     
     public override func loadView() {
         view = HomeView()
+    }
+    
+    func setupActions() {
+        self.searchView.searchButton.addTarget(self, action: #selector(HomeViewController.handleSearch), for: .touchUpInside)
     }
     
     func loadUserInfo() {
@@ -56,6 +63,10 @@ class HomeViewController: BaseViewController {
                 print(result.error ?? "The operation couldn’t be completed.")
             }
         }
+    }
+    
+    @objc func handleSearch() {
+        // do something
     }
     
     deinit {

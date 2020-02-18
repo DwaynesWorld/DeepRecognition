@@ -13,7 +13,11 @@ class MainController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let homeController = HomeViewController()
+        let homeController = UINavigationController(rootViewController: HomeViewController())
+        homeController.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        homeController.navigationBar.shadowImage = UIImage()
+        homeController.navigationBar.isTranslucent = true
+        homeController.navigationBar.backgroundColor = .clear
         homeController.tabBarItem.title = "Home"
         homeController.tabBarItem.image = UIImage(icon:.ionicons(.home), size: CGSize(width: 30, height: 30))
 
