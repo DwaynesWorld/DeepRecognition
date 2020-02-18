@@ -109,7 +109,7 @@ class AuthenticationService: AuthenticationServiceProtocol {
         }
         
         var success = false
-        self.resfreshSession(with: session.refreshToken, email: email) { success = $0 }
+        resfreshSession(with: session.refreshToken, email: email) { success = $0 }
         
         return success
     }

@@ -16,38 +16,38 @@ class TestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.skView = SKView(frame: UIScreen.main.bounds)
-        self.view.addSubview(skView)
+        skView = SKView(frame: UIScreen.main.bounds)
+        view.addSubview(skView)
         
         let navBarHeight = navigationController?.navigationBar.frame.height ?? 0
-        let statusBarHeight = self.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
 
-        self.floatingCollectionScene = BubblesScene(size: skView.bounds.size)
-        self.floatingCollectionScene.topOffset = navBarHeight + statusBarHeight + 200
-        self.skView.presentScene(floatingCollectionScene)
+        floatingCollectionScene = BubblesScene(size: skView.bounds.size)
+        floatingCollectionScene.topOffset = navBarHeight + statusBarHeight + 200
+        skView.presentScene(floatingCollectionScene)
         
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(
 //            barButtonSystemItem: .done,
 //            target: self,
-//            action: #selector(self.commitSelection))
+//            action: #selector(commitSelection))
 //
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(
 //            barButtonSystemItem: .add,
 //            target: self,
-//            action: #selector(self.addBubble))
+//            action: #selector(addBubble))
         
         for _ in 0..<20 {
-            self.addBubble()
+            addBubble()
         }
     }
     
     @objc func addBubble() {
         let node = BubbleNode.make()
-        self.floatingCollectionScene.addChild(node)
+        floatingCollectionScene.addChild(node)
     }
     
     @objc func commitSelection() {
-        self.floatingCollectionScene.performCommitSelectionAnimation()
+        floatingCollectionScene.performCommitSelectionAnimation()
     }
 }
 

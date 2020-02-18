@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         if let delegate = UIApplication.shared.delegate {
-            self.tabBarController?.delegate = delegate as? UITabBarControllerDelegate
+            tabBarController?.delegate = delegate as? UITabBarControllerDelegate
         }
     }
     

@@ -62,15 +62,15 @@ class SearchView: BaseView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            searchField.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            searchField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
-            searchField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -60),
+            searchField.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            searchField.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            searchField.rightAnchor.constraint(equalTo: rightAnchor, constant: -60),
             searchField.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         NSLayoutConstraint.activate([
-            searchButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            searchButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
+            searchButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            searchButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             searchButton.heightAnchor.constraint(equalToConstant: 40),
             searchButton.widthAnchor.constraint(equalToConstant: 40)
         ])

@@ -37,8 +37,16 @@ class HomeView: BaseView {
         return view
     }()
     
+    public let employeeSection: EmployeesView = {
+        let view = EmployeesView(frame: .zero)
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     public let teamSection: TeamsView = {
         let view = TeamsView(frame: .zero)
+        view.isHidden = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -59,6 +67,7 @@ class HomeView: BaseView {
         addSubview(greetingLabel)
         addSubview(promptLabel)
         addSubview(searchView)
+        addSubview(employeeSection)
         addSubview(teamSection)
     }
     
@@ -77,15 +86,22 @@ class HomeView: BaseView {
         
         NSLayoutConstraint.activate([
             searchView.topAnchor.constraint(equalTo: promptLabel.bottomAnchor, constant: 50),
-            searchView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
-            searchView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
+            searchView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
+            searchView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
             searchView.heightAnchor.constraint(equalToConstant: 60)
+        ])
+
+        NSLayoutConstraint.activate([
+            employeeSection.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 40),
+            employeeSection.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+            employeeSection.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
+            employeeSection.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 20)
         ])
         
         NSLayoutConstraint.activate([
             teamSection.topAnchor.constraint(equalTo: searchView.bottomAnchor, constant: 40),
-            teamSection.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            teamSection.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            teamSection.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+            teamSection.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
             teamSection.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 20)
         ])
     }

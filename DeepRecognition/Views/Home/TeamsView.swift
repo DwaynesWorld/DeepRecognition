@@ -57,16 +57,16 @@ class TeamsView: BaseView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
+            label.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            label.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
             label.heightAnchor.constraint(equalToConstant: 15),
             label.widthAnchor.constraint(equalToConstant: 70)
         ])
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
-            collectionView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            collectionView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+            collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
             collectionView.heightAnchor.constraint(equalToConstant: 320)
         ])
     }
@@ -83,7 +83,7 @@ extension TeamsView:
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
         
-        return self.teams?.count ?? 0
+        return teams?.count ?? 0
     }
     
     func collectionView(

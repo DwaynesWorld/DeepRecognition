@@ -33,15 +33,15 @@ class MainController: UITabBarController {
         settingsController.tabBarItem.title = "Settings"
         settingsController.tabBarItem.image = UIImage(icon: .ionicons(.gearA), size: CGSize(width: 30, height: 30))
         
-        self.viewControllers = [homeController, v1, v2, settingsController]
-        self.selectedViewController = homeController
-        self.tabBar.barTintColor = .white
-        self.tabBar.tintColor = .rgb(196, 73, 76)
-        self.tabBar.unselectedItemTintColor = .rgb(30, 46, 52)
-        self.tabBar.layer.masksToBounds = true
-        self.tabBar.isTranslucent = true
-        self.tabBar.layer.cornerRadius = 20
-        self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        viewControllers = [homeController, v1, v2, settingsController]
+        selectedViewController = homeController
+        tabBar.barTintColor = .white
+        tabBar.tintColor = .rgb(196, 73, 76)
+        tabBar.unselectedItemTintColor = .rgb(30, 46, 52)
+        tabBar.layer.masksToBounds = true
+        tabBar.isTranslucent = true
+        tabBar.layer.cornerRadius = 20
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 }
 

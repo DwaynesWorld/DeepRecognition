@@ -13,7 +13,7 @@ open class FloatingCollectionScene: SKScene {
     
     private(set) var mode: FloatingCollectionSceneMode = .normal {
         didSet {
-            self.modeUpdated()
+            modeUpdated()
         }
     }
     
@@ -37,11 +37,10 @@ open class FloatingCollectionScene: SKScene {
         self.configure()
     }
     
-    // MARK: -
     // MARK: Frame Updates
     // TODO: refactoring
     override open func update(_ currentTime: TimeInterval) {
-        self.floatingNodes.forEach { node in
+        floatingNodes.forEach { node in
             let distanceFromCenter = self.magneticField.position.distance(from: node.position)
             node.physicsBody?.linearDamping = 2
             
@@ -50,46 +49,45 @@ open class FloatingCollectionScene: SKScene {
             }
         }
 
-        if self.mode == .moving || !self.allowEditing {
+        if mode == .moving || !allowEditing {
             return
         }
         
-        if let touchStartedTime = self.touchStartedTime, let touchPoint = self.touchPoint {
+        if let touchStartedTime = touchStartedTime, let touchPoint = touchPoint {
             let deltaTime = currentTime - touchStartedTime
-            if deltaTime >= self.timeToStartRemoving {
+            if deltaTime >= timeToStartRemoving {
                 self.touchStartedTime = nil
                 
                 if let node = atPoint(touchPoint) as? FloatingNode {
-                    self.removingStartedTime = currentTime
-                    self.startRemovingNode(node)
+                    removingStartedTime = currentTime
+                    startRemovingNode(node)
                 }
             }
-        } else if mode == .editing, let removingStartedTime = self.removingStartedTime, let touchPoint = self.touchPoint {
+        } else if mode == .editing, let removingStartedTime = removingStartedTime, let touchPoint = touchPoint {
             let deltaTime = currentTime - removingStartedTime
             
             if deltaTime >= timeToRemove {
                 self.removingStartedTime = nil
                 
-                if let node = self.atPoint(touchPoint) as? FloatingNode {
-                    if let index = self.floatingNodes.firstIndex(of: node) {
-                        self.removeFloatingNode(at: index)
+                if let node = atPoint(touchPoint) as? FloatingNode {
+                    if let index = floatingNodes.firstIndex(of: node) {
+                        removeFloatingNode(at: index)
                     }
                 }
             }
         }
     }
     
-    // MARK: -
     // MARK: Touching Handlers
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first as UITouch? {
-            self.touchPoint = touch.location(in: self)
-            self.touchStartedTime = touch.timestamp
+            touchPoint = touch.location(in: self)
+            touchStartedTime = touch.timestamp
         }
     }
     
     override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.mode == .editing {
+        if mode == .editing {
             return
         }
         
@@ -104,19 +102,19 @@ open class FloatingCollectionScene: SKScene {
             
             if dx == 0 && dy == 0 {
                 return
-            } else if self.mode != .moving {
-               self.mode = .moving
+            } else if mode != .moving {
+               mode = .moving
             }
             
-            for node in self.floatingNodes {
+            for node in floatingNodes {
                 let w = node.frame.size.width / 2
                 let h = node.frame.size.height / 2
                 var direction = CGVector(
-                    dx: self.pushStrength * dx,
-                    dy: self.pushStrength * dy
+                    dx: pushStrength * dx,
+                    dy: pushStrength * dy
                 )
                 
-                if self.restrictedToBounds {
+                if restrictedToBounds {
                     if !(-w...(size.width + w) ~= node.position.x) && (node.position.x * dx) > 0 {
                         direction.dx = 0
                     }
@@ -132,47 +130,46 @@ open class FloatingCollectionScene: SKScene {
     }
     
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.mode != .moving, let touchPoint = touchPoint {
-            if let node = self.atPoint(touchPoint) as? FloatingNode {
-                self.updateState(of: node)
+        if mode != .moving, let touchPoint = touchPoint {
+            if let node = atPoint(touchPoint) as? FloatingNode {
+                updateState(of: node)
             }
         }
         
-        self.mode = .normal
+        mode = .normal
     }
     
     override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.mode = .normal
+        mode = .normal
     }
     
-    // MARK: -
     // MARK: Nodes Manipulation
     private func cancelRemovingNode(_ node: FloatingNode!) {
-        self.mode = .normal
+        mode = .normal
         node.physicsBody?.isDynamic = true
         node.state = node.previousState
         
-        if let index = self.floatingNodes.firstIndex(of: node) {
-            self.floatingDelegate?.floatingScene?(self, canceledRemovingOfFloatingNodeAt: index)
+        if let index = floatingNodes.firstIndex(of: node) {
+            floatingDelegate?.floatingScene?(self, canceledRemovingOfFloatingNodeAt: index)
         }
     }
     
     open func floatingNode(at index: Int) -> FloatingNode? {
-        if 0..<self.floatingNodes.count ~= index {
-            return self.floatingNodes[index]
+        if 0..<floatingNodes.count ~= index {
+            return floatingNodes[index]
         }
         
         return nil
     }
     
     open func indexOfSelectedNode() -> Int? {
-        return self.indexesOfSelectedNodes().first
+        return indexesOfSelectedNodes().first
     }
     
     open func indexesOfSelectedNodes() -> [Int] {
         var indexes: [Int] = []
         
-        for (i, node) in self.floatingNodes.enumerated() {
+        for (i, node) in floatingNodes.enumerated() {
             if node.state == .selected {
                 indexes.append(i)
             }
@@ -196,20 +193,20 @@ open class FloatingCollectionScene: SKScene {
     
     open func removeFloatingNode(at index: Int) {
         if shouldRemoveNode(at: index) {
-            let node = self.floatingNodes[index]
-            self.floatingNodes.remove(at: index)
+            let node = floatingNodes[index]
+            floatingNodes.remove(at: index)
             node.removeFromParent()
-            self.floatingDelegate?.floatingScene?(self, didRemoveFloatingNodeAt: index)
+            floatingDelegate?.floatingScene?(self, didRemoveFloatingNodeAt: index)
         }
     }
     
     private func startRemovingNode(_ node: FloatingNode) {
-        self.mode = .editing
+        mode = .editing
         node.physicsBody?.isDynamic = false
         node.state = .removing
         
         if let index = floatingNodes.firstIndex(of: node) {
-            self.floatingDelegate?.floatingScene?(self, startedRemovingOfFloatingNodeAt: index)
+            floatingDelegate?.floatingScene?(self, startedRemovingOfFloatingNodeAt: index)
         }
     }
     
@@ -217,27 +214,26 @@ open class FloatingCollectionScene: SKScene {
         if let index = floatingNodes.firstIndex(of: node) {
             switch node.state {
             case .normal:
-                if self.shouldSelectNode(at: index) {
-                    if !self.allowMultipleSelection, let selectedIndex = self.indexOfSelectedNode() {
-                        let node = self.floatingNodes[selectedIndex]
-                        self.updateState(of: node)
+                if shouldSelectNode(at: index) {
+                    if !allowMultipleSelection, let selectedIndex = indexOfSelectedNode() {
+                        let node = floatingNodes[selectedIndex]
+                        updateState(of: node)
                     }
                     
                     node.state = .selected
-                    self.floatingDelegate?.floatingScene?(self, didSelectFloatingNodeAt: index)
+                    floatingDelegate?.floatingScene?(self, didSelectFloatingNodeAt: index)
                 }
             case .selected:
-                if self.shouldDeselectNode(at: index) {
+                if shouldDeselectNode(at: index) {
                     node.state = .normal
-                    self.floatingDelegate?.floatingScene?(self, didDeselectFloatingNodeAt: index)
+                    floatingDelegate?.floatingScene?(self, didDeselectFloatingNodeAt: index)
                 }
             case .removing:
-                self.cancelRemovingNode(node)
+                cancelRemovingNode(node)
             }
         }
     }
     
-    // MARK: -
     // MARK: Configuration
     override open func addChild(_ node: SKNode) {
         if let newNode = node as? FloatingNode {
@@ -284,7 +280,6 @@ open class FloatingCollectionScene: SKScene {
         }
     }
     
-    // MARK: -
     // MARK: Floating Delegate Helpers
     private func shouldRemoveNode(at index: Int) -> Bool {
         if 0..<self.floatingNodes.count ~= index {
@@ -314,8 +309,4 @@ open class FloatingCollectionScene: SKScene {
     }
 }
 
-extension CGPoint {
-    func distance(from point: CGPoint) -> CGFloat {
-        return hypot(point.x - self.x, point.y - self.y)
-    }
-}
+

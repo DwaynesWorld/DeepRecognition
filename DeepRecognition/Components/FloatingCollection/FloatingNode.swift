@@ -14,8 +14,8 @@ open class FloatingNode: SKShapeNode {
     public var state: FloatingNodeState = .normal {
         didSet {
             if state != oldValue {
-                self.previousState = oldValue
-                self.stateChanged()
+                previousState = oldValue
+                stateChanged()
             }
         }
     }
@@ -30,25 +30,25 @@ open class FloatingNode: SKShapeNode {
         
         switch state {
         case .normal:
-            action = self.normalizeAnimation()
+            action = normalizeAnimation()
             actionKey = FloatingNode.normalizeKey
         case .selected:
-            action = self.selectingAnimation()
+            action = selectingAnimation()
             actionKey = FloatingNode.selectingKey
         case .removing:
-            action = self.removingAnimation()
+            action = removingAnimation()
             actionKey = FloatingNode.removingKey
         }
         
         if let action = action, let actionKey = actionKey {
-            self.removeAction(forKey: actionKey)
-            self.run(action, withKey: actionKey)
+            removeAction(forKey: actionKey)
+            run(action, withKey: actionKey)
         }
     }
     
     override open func removeFromParent() {
-        if let action = self.removeAnimation() {
-            self.run(action) {
+        if let action = removeAnimation() {
+            run(action) {
                 super.removeFromParent()
             }
         } else {
@@ -56,7 +56,6 @@ open class FloatingNode: SKShapeNode {
         }
     }
     
-    // MARK: -
     // MARK: Animations
     open func selectingAnimation() -> SKAction? { return nil }
     open func normalizeAnimation() -> SKAction? { return nil }

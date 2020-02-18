@@ -13,11 +13,13 @@ class HomeViewController: BaseViewController {
     private let userService = AppDelegate.container.resolve(UserServiceProtocol.self)!
     private let teamService = AppDelegate.container.resolve(TeamServiceProtocol.self)!
     
-    public var currentUser: UserProfile?
+    private var currentUser: UserProfile?
+    private var isSearching: Bool = false
     
     unowned var homeView: HomeView { self.view as! HomeView }
     unowned var greetingLabel: UILabel { homeView.greetingLabel }
     unowned var searchView: SearchView { homeView.searchView }
+    unowned var employeeSection: EmployeesView { homeView.employeeSection }
     unowned var teamSection: TeamsView { homeView.teamSection }
     
     override func viewDidLoad() {
@@ -33,7 +35,11 @@ class HomeViewController: BaseViewController {
     }
     
     func setupActions() {
-        self.searchView.searchButton.addTarget(self, action: #selector(HomeViewController.handleSearch), for: .touchUpInside)
+        searchView.searchButton.addTarget(self, action: #selector(HomeViewController.handleSearch), for: .touchUpInside)
+        
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(HomeViewController.dismissSearchResults))
+        swipe.direction = .down
+        employeeSection.slideIndicator.addGestureRecognizer(swipe)
     }
     
     func loadUserInfo() {
@@ -41,7 +47,7 @@ class HomeViewController: BaseViewController {
             return
         }
         
-        self.userService.getUser(fromEmail: email) { result in
+        userService.getUser(fromEmail: email) { [unowned self] result in
             if let profile = result.data {
                 self.currentUser = profile
                 
@@ -56,7 +62,7 @@ class HomeViewController: BaseViewController {
     }
     
     func loadTeams() {
-        self.teamService.getTeams { result in
+        teamService.getTeams { [unowned self] result in
             if let teams = result.data {
                 self.teamSection.teams = teams.filter { $0.employeeCount > 0 }
             } else {
@@ -66,7 +72,21 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func handleSearch() {
-        // do something
+        guard !isSearching else { return }
+        
+        isSearching = true
+        teamSection.isHidden = true
+        employeeSection.isHidden = false
+        employeeSection.showLoading()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+            self.employeeSection.showEmployees([self.currentUser!, self.currentUser!])
+            self.isSearching = false
+        }
+    }
+    
+    @objc func dismissSearchResults() {
+        print("dismissing")
     }
     
     deinit {

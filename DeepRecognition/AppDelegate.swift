@@ -51,6 +51,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         shouldSelect viewController: UIViewController) -> Bool {
         
         if viewController is SettingsPlaceholderViewController {
+            // Handle Navigation Controllers
+            if let navigation = tabBarController.selectedViewController as? UINavigationController {
+                if let current = navigation.viewControllers[0] as? BaseViewController {
+                    current.settingsViewController.showSettings()
+                    return false
+                }
+            }
+            
+            // Handle Non-Navigation Controllers
             if let current = tabBarController.selectedViewController as? BaseViewController {
                 current.settingsViewController.showSettings()
                 return false

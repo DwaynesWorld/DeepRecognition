@@ -59,6 +59,7 @@ class LoginView: BaseView {
         field.backgroundColor = UIColor(white: 1, alpha: 0.95)
         field.borderStyle = .roundedRect
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.tag = 0
         
         field.text = "kyle.thompson@hcss.com"
         
@@ -72,6 +73,7 @@ class LoginView: BaseView {
         field.backgroundColor = UIColor(white: 1, alpha: 0.95)
         field.borderStyle = .roundedRect
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.tag = 1
         
         field.text = ""
         
@@ -172,7 +174,7 @@ class LoginView: BaseView {
         
         NSLayoutConstraint.activate([
             logo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 60),
-            logo.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
+            logo.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
             logo.widthAnchor.constraint(equalToConstant: 65),
             logo.heightAnchor.constraint(equalToConstant: 65)
         ])

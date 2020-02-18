@@ -14,38 +14,38 @@ class BubblesScene: FloatingCollectionScene {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        self.configure()
+        configure()
     }
     
     fileprivate func configure() {
-        self.backgroundColor = .rgb(242, 245, 248)
-        self.scaleMode = .aspectFill
-        self.allowMultipleSelection = true
-        self.allowEditing = true
+        backgroundColor = .rgb(242, 245, 248)
+        scaleMode = .aspectFill
+        allowMultipleSelection = true
+        allowEditing = true
         
-        var bodyFrame = self.frame
-        bodyFrame.size.width = CGFloat(self.magneticField.minimumRadius)
+        var bodyFrame = frame
+        bodyFrame.size.width = CGFloat(magneticField.minimumRadius)
         bodyFrame.origin.x -= bodyFrame.size.width / 2
-        bodyFrame.size.height = frame.size.height - self.bottomOffset
-        bodyFrame.origin.y = frame.size.height - bodyFrame.size.height - self.topOffset
+        bodyFrame.size.height = frame.size.height - bottomOffset
+        bodyFrame.origin.y = frame.size.height - bodyFrame.size.height - topOffset
         
-        self.physicsBody = SKPhysicsBody(edgeLoopFrom: bodyFrame)
-        self.magneticField.position = CGPoint(
+        physicsBody = SKPhysicsBody(edgeLoopFrom: bodyFrame)
+        magneticField.position = CGPoint(
             x: frame.size.width / 2,
-            y: frame.size.height / 2 + self.bottomOffset / 2 - self.topOffset)
+            y: frame.size.height / 2 + bottomOffset / 2 - topOffset)
     }
     
     override func addChild(_ node: SKNode) {
         if node is BubbleNode {
-            var x = CGFloat.random(min: -self.bottomOffset, max: -node.frame.size.width)
+            var x = CGFloat.random(min: -bottomOffset, max: -node.frame.size.width)
             let y = CGFloat.random(
-                min: frame.size.height - self.bottomOffset - node.frame.size.height,
-                max: frame.size.height - self.topOffset - node.frame.size.height)
+                min: frame.size.height - bottomOffset - node.frame.size.height,
+                max: frame.size.height - topOffset - node.frame.size.height)
             
-            if self.floatingNodes.count % 2 == 0 || self.floatingNodes.isEmpty {
+            if floatingNodes.count % 2 == 0 || floatingNodes.isEmpty {
                 x = CGFloat.random(
                     min: frame.size.width + node.frame.size.width,
-                    max: frame.size.width + self.bottomOffset)
+                    max: frame.size.width + bottomOffset)
             }
             
             node.position = CGPoint(x: x, y: y)
@@ -55,24 +55,24 @@ class BubblesScene: FloatingCollectionScene {
     }
     
     func performCommitSelectionAnimation() {
-        let currentPhysicsSpeed = self.physicsWorld.speed
-        self.physicsWorld.speed = 0
-        let sortedNodes = self.sortedFloatingNodes()
+        let currentPhysicsSpeed = physicsWorld.speed
+        physicsWorld.speed = 0
+        let sortedNodes = sortedFloatingNodes()
         var actions: [SKAction] = []
         
         for node in sortedNodes {
             node.physicsBody = nil
-            let action = self.actionForFloatingNode(node)
+            let action = actionForFloatingNode(node)
             actions.append(action)
         }
         
-        self.run(SKAction.sequence(actions)) { [weak self] in
+        run(SKAction.sequence(actions)) { [weak self] in
             self?.physicsWorld.speed = currentPhysicsSpeed
         }
     }
 
     func sortedFloatingNodes() -> [FloatingNode] {
-        return self.floatingNodes.sorted { (node: FloatingNode, nextNode: FloatingNode) -> Bool in
+        return floatingNodes.sorted { (node: FloatingNode, nextNode: FloatingNode) -> Bool in
             let distance = node.position.distance(from: self.magneticField.position)
             let nextDistance = nextNode.position.distance(from: self.magneticField.position)
             return distance < nextDistance && node.state != .selected
@@ -96,10 +96,3 @@ class BubblesScene: FloatingCollectionScene {
         return action
     }
 }
-
-extension CGFloat {
-    public static func random(min: CGFloat, max: CGFloat) -> CGFloat {
-        return CGFloat(Float.random(in: Float(min)...Float(max)))
-    }
-}
-

@@ -19,16 +19,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        self.window = UIWindow()
-        self.window?.makeKeyAndVisible()
-        self.window?.windowScene = windowScene
+        window = UIWindow()
+        window?.makeKeyAndVisible()
+        window?.windowScene = windowScene
         
         let auth = AppDelegate.container.resolve(AuthenticationServiceProtocol.self)!
         
+        // TODO: Remove this. Create EntryPointViewController.
         if auth.checkSession() {
-            self.window?.rootViewController = MainController()
+            window?.rootViewController = MainController()
         } else {
-            self.window?.rootViewController = LoginViewController()
+            window?.rootViewController = LoginViewController()
         }
     }
 

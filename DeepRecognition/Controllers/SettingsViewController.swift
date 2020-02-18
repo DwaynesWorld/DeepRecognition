@@ -45,7 +45,7 @@ class SettingsViewController: NSObject {
     
     lazy var collectionViewHeight: CGFloat = {
         let bottomPadding: CGFloat = 20
-        return CGFloat(self.settings.count) * self.cellHeight + bottomPadding
+        return CGFloat(settings.count) * cellHeight + bottomPadding
     }()
     
     lazy var collectionView: UICollectionView = {
@@ -104,7 +104,7 @@ class SettingsViewController: NSObject {
     }
     
     @objc func handleCancelDismiss() {
-        self.handleDismiss { [unowned self] _ in
+        handleDismiss { [unowned self] _ in
             self.dimmedView.removeFromSuperview()
             self.collectionView.removeFromSuperview()
         }
@@ -176,7 +176,7 @@ extension SettingsViewController:
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath) {
         
-        let setting = self.settings[indexPath.item]
+        let setting = settings[indexPath.item]
         
         if setting.name == .cancel {
             handleDismiss { [unowned self] _ in

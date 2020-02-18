@@ -12,9 +12,9 @@ class Setting: NSObject {
     let name: SettingName
     let icon: UIImage
     
-    init(name: SettingName, image: UIImage) {
-        self.name = name
-        self.icon = image
+    init(name settingName: SettingName, image: UIImage) {
+        name = settingName
+        icon = image
     }
 }
 

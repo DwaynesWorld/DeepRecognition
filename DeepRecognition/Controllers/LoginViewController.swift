@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private var isLoggingIn = true
     private let authenticationService = AppDelegate.container.resolve(AuthenticationServiceProtocol.self)!
@@ -24,10 +24,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         setupActions()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 //        if isSignedIn() {
 //            let home = HomeViewController()
 //            home.modalPresentationStyle = .fullScreen
@@ -36,24 +39,39 @@ class LoginViewController: UIViewController {
     }
     
     public override func loadView() {
-        self.view = LoginView()
-    }
-    
-    private func isSignedIn() -> Bool {
-        return self.authenticationService.checkSession()
+        view = LoginView()
     }
     
     private func setupActions() {
-        loginButton.addTarget(self, action: #selector(LoginViewController.handleLogin), for: .touchUpInside)
+        loginButton.addTarget(
+            self,
+            action: #selector(LoginViewController.handleLogin),
+            for: .touchUpInside)
         
-        let signupTapped = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.handleSignup))
+        let tap = UITapGestureRecognizer(
+            target: self.loginView,
+            action: #selector(loginView.endEditing))
+        tap.cancelsTouchesInView = false
+        loginView.addGestureRecognizer(tap)
+        
+        let signupTapped = UITapGestureRecognizer(
+            target: self,
+            action: #selector(LoginViewController.handleSignup))
         signupLabel.addGestureRecognizer(signupTapped)
         
-        let forgotPasswordTapped = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.handleForgotPassword))
+        let forgotPasswordTapped = UITapGestureRecognizer(
+            target: self,
+            action: #selector(LoginViewController.handleForgotPassword))
         forgotPasswordLabel.addGestureRecognizer(forgotPasswordTapped)
         
-        let termsAndConditionsTapped = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.handleTermsAndConditions))
+        let termsAndConditionsTapped = UITapGestureRecognizer(
+            target: self,
+            action: #selector(LoginViewController.handleTermsAndConditions))
         termsLabel.addGestureRecognizer(termsAndConditionsTapped)
+    }
+    
+    private func isSignedIn() -> Bool {
+        return authenticationService.checkSession()
     }
     
     @objc func handleLogin() {
@@ -67,7 +85,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        self.authenticationService.signIn(with: email, password: password) { result in
+        authenticationService.signIn(with: email, password: password) { [unowned self] result in
             if result.success {
                 let main = MainController()
                 main.modalPresentationStyle = .fullScreen
@@ -80,6 +98,7 @@ class LoginViewController: UIViewController {
     
     @objc func handleSignup() {
         // Launch 7Geese Url
+        print("signup")
     }
     
     @objc func handleForgotPassword() {
@@ -89,4 +108,18 @@ class LoginViewController: UIViewController {
     @objc func handleTermsAndConditions() {
         print("terms and cons")
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return false
+    }
+    
+    
 }
