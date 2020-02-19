@@ -74,7 +74,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return authenticationService.checkSession()
     }
     
-    @objc func handleLogin() {
+    @objc
+    func handleLogin() {
         guard let email = emailTextField.text, email.count > 0 else {
             // set invalid label
             return
@@ -96,16 +97,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @objc func handleSignup() {
+    @objc
+    func handleSignup() {
         // Launch 7Geese Url
         print("signup")
     }
     
-    @objc func handleForgotPassword() {
+    @objc
+    func handleForgotPassword() {
         print("forgot pass")
     }
     
-    @objc func handleTermsAndConditions() {
+    @objc
+    func handleTermsAndConditions() {
         print("terms and cons")
     }
     

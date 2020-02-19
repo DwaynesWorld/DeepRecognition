@@ -62,7 +62,8 @@ class SettingsViewController: NSObject {
         return view
     }()
     
-    @objc func showSettings() {
+    @objc
+    func showSettings() {
         guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
         
         dimmedView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -103,7 +104,8 @@ class SettingsViewController: NSObject {
             completion: nil)
     }
     
-    @objc func handleCancelDismiss() {
+    @objc
+    func handleCancelDismiss() {
         handleDismiss { [unowned self] _ in
             self.dimmedView.removeFromSuperview()
             self.collectionView.removeFromSuperview()

@@ -250,7 +250,7 @@ open class FloatingCollectionScene: SKScene {
         self.magneticField = SKFieldNode.radialGravityField()
         self.magneticField.region = SKRegion(radius: 10000)
         self.magneticField.minimumRadius = 10000
-        self.magneticField.strength = 8000
+        self.magneticField.strength = 6000
         self.magneticField.position = CGPoint(x: size.width / 2, y: size.height / 2)
         self.magneticField.texture = SKTexture(image: .init(icon: .dripicon(.alarm), size: CGSize(width: 20, height: 20)))
         self.addChild(self.magneticField)

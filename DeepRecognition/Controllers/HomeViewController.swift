@@ -35,9 +35,14 @@ class HomeViewController: BaseViewController {
     }
     
     func setupActions() {
-        searchView.searchButton.addTarget(self, action: #selector(HomeViewController.handleSearch), for: .touchUpInside)
+        searchView.searchButton.addTarget(
+            self,
+            action: #selector(HomeViewController.handleSearch),
+            for: .touchUpInside)
         
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(HomeViewController.dismissSearchResults))
+        let swipe = UISwipeGestureRecognizer(
+            target: self,
+            action: #selector(HomeViewController.dismissSearchResults))
         swipe.direction = .down
         employeeSection.slideIndicator.addGestureRecognizer(swipe)
     }
@@ -71,7 +76,8 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    @objc func handleSearch() {
+    @objc
+    func handleSearch() {
         guard !isSearching else { return }
         
         isSearching = true
@@ -79,13 +85,17 @@ class HomeViewController: BaseViewController {
         employeeSection.isHidden = false
         employeeSection.showLoading()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
-            self.employeeSection.showEmployees([self.currentUser!, self.currentUser!])
-            self.isSearching = false
+        userService.getUsers(fromSearch: searchView.searchField.text ?? "") { result in
+            if let employees = result.data {                
+                self.employeeSection.showEmployees(employees)
+                self.isSearching = false
+            }
         }
     }
     
-    @objc func dismissSearchResults() {
+    @objc
+    func dismissSearchResults() {
+        // https://github.com/brianadvent/InteractiveCardViewAnimation
         print("dismissing")
     }
     

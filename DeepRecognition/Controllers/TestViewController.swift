@@ -36,17 +36,19 @@ class TestViewController: UIViewController {
 //            target: self,
 //            action: #selector(addBubble))
         
-        for _ in 0..<20 {
+        for _ in 0..<2 {
             addBubble()
         }
     }
     
-    @objc func addBubble() {
+    @objc
+    func addBubble() {
         let node = BubbleNode.make()
         floatingCollectionScene.addChild(node)
     }
     
-    @objc func commitSelection() {
+    @objc
+    func commitSelection() {
         floatingCollectionScene.performCommitSelectionAnimation()
     }
 }
